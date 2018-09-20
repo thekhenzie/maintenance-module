@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MaintenancemanagementRoutingModule } from './maintenancemanagement-routing.module';
+import { MaintenancemanagementRoutingModule } from './maintenancemanagement.routes';
 
 @NgModule({
   imports: [
