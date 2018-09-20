@@ -6,16 +6,16 @@
   </div>
   <div class="row">
     <div class="col col-lg-12">
-        <app-inspectionorderstatus isChecklist="true"></app-inspectionorderstatus>
+      <app-inspectionorderstatus isChecklist="true"></app-inspectionorderstatus>
     </div>
-</div>
+  </div>
   <p-panel>
     <div class="searchHeader">
       <p-button icon="fa fa-fw fa-plus" (onClick)="newComment()" label="Add Note"></p-button>
     </div>
     <div class="ui-g">
-      <p-table #pTable id="inspectionTable" [value]="inspectionOrderNotesList" (onLazyLoad)="paginate($event)" [loading]="showTableLoading"
-        [totalRecords]="totalRecord">
+      <p-table #pTable id="inspectionTable" [value]="inspectionOrderNotesList" (onLazyLoad)="paginate($event)"
+        [loading]="showTableLoading" [totalRecords]="totalRecord">
         <ng-template pTemplate="caption">
           <div style="clear: both"></div>
         </ng-template>
@@ -48,8 +48,8 @@
               </ng-container>
               <ng-container *ngSwitchCase="'action'">
                 <td *ngIf="col.visible">
-                  <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left" [disabled]="rowData['userName'] != username"
-                    (click)="editNotes(rowData)">
+                  <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                    [disabled]="rowData['userName'] != username" (click)="editNotes(rowData)">
                     <span class="fa fa-fw fa-edit ui-clickable ui-button-icon-left"></span>
                     <span class="ui-button-text ui-clickable">Edit</span>
                   </button>
@@ -74,16 +74,9 @@
   </p-panel>
 </div>
 
-<app-inspection-notes-confirmation
-[display]="display"
-[viewOnly]="viewOnly"
-[isNewNote]="isNewNote"
-[selectedInspectionOrderNote]="selectedInspectionOrderNote"
-[commentSection]="commentSection"
-[noteSubject]="noteSubject"
-[indexOfNote]="indexOfNote"
-(closeModal)='getCloseModal($event)'
-(resetTable)='resetTable($event)'></app-inspection-notes-confirmation>
+<app-inspection-notes-confirmation [display]="display" [viewOnly]="viewOnly" [isNewNote]="isNewNote"
+  [selectedInspectionOrderNote]="selectedInspectionOrderNote" [commentSection]="commentSection" [noteSubject]="noteSubject"
+  [indexOfNote]="indexOfNote" (closeModal)='getCloseModal($event)' (resetTable)='resetTable($event)'></app-inspection-notes-confirmation>
 
 <!-- <form [formGroup]="userform">
 <p-dialog  header="Notes" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" [closable]="false">
