@@ -36,6 +36,7 @@ import { StaticPagesComponent } from './root/pages/static-pages/static-pages.com
 import { StaticContentExistGuard } from './core/guards/static-content-exists.guard';
 import { CheckIfIOIsLockedGuard } from './core/guards/check-if-io-islocked.guard';
 import { PolicyXmlComponent } from './ordermanagement/pages/policy-xml/policy-xml.component';
+import { MaintenancemanagementComponent } from './maintenancemanagement/pages/index/maintenancemanagement.component';
 
 const orderManagementRoutes: Routes = [
   {
@@ -126,7 +127,7 @@ const orderManagementRoutes: Routes = [
     component: CreateinspectionorderComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      roles: RoleConstants.AnyoneExceptInsured, 
+      roles: RoleConstants.AnyoneExceptInsured,
       title: 'Inspection Info',
       urls: [{ title: 'Home', url: `/${PathConstants.Dashboard.Index}` }, { title: 'Order Management', url: `/${PathConstants.OrderManagement.Index}` },
       { title: 'Inspection Info' }]
@@ -137,7 +138,7 @@ const orderManagementRoutes: Routes = [
     component: PolicyXmlComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      roles: RoleConstants.AnyoneExceptInsured, 
+      roles: RoleConstants.AnyoneExceptInsured,
       title: 'Inspection Info',
       urls: [{ title: 'Home', url: `/${PathConstants.Dashboard.Index}` }, { title: 'Order Management', url: `/${PathConstants.OrderManagement.Index}` },
       { title: 'Create Inspection Order From Policy XML' }]
@@ -261,6 +262,19 @@ const reportRoutes: Routes = [
   }
 ];
 
+const maintenanceManagementRoutes = [
+  {
+    path: '',
+    component: MaintenancemanagementComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      roles: RoleConstants.AnyoneExceptInsured,
+      title: 'Maintenance Management',
+      urls: [{ title: 'Home', url: `/${PathConstants.Dashboard.Index}` }, { title: 'Maintenance Management' }]
+    }
+  }
+]
+
 const userManagementRoutes = [
   {
     path: '',
@@ -316,8 +330,8 @@ const userManagementRoutes = [
 
 const rootRoutes: Routes = [
   { path: PathConstants.Root.Forbidden, component: ForbiddenComponent },
-  { 
-    path: ':staticcontentname', 
+  {
+    path: ':staticcontentname',
     canActivate: [StaticContentExistGuard],
     component: StaticPagesComponent
   }
@@ -343,6 +357,10 @@ const routes: Routes = [
           {
             path: PathConstants.UserManagement.Index,
             children: userManagementRoutes
+          },
+          {
+            path: PathConstants.MaintenanceManagement.Index,
+            children: maintenanceManagementRoutes
           },
           {
             path: 'account',

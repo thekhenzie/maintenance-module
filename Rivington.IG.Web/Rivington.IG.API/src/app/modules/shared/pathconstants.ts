@@ -24,6 +24,9 @@ export const PathConstants = {
     UserManagement: {
         Index: "user-management"
     },
+    MaintenanceManagement: {
+        Index: "maintenance-management"
+    },
     Report: {
         Insured: "reporting/order-management/inspection-order/insured"
     }
