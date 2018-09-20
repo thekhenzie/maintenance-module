@@ -24,6 +24,8 @@ import { UserManagementRoutingModule } from './modules/usermanagement/user-manag
 import { SharedModule } from './modules/shared/shared.module';
 import { ReportingModule } from './reporting.modules/reporting.module';
 import { ReportingRoutingModule } from './reporting.modules/reporting.routes';
+import { MaintenancemanagementModule } from './modules/maintenancemanagement/maintenancemanagement.module';
+import { MaintenancemanagementRoutingModule } from './modules/maintenancemanagement/maintenancemanagement.routes';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { ReportingRoutingModule } from './reporting.modules/reporting.routes';
     AppRoutingModule,
 
     // ng-bootstrap module
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+
+    MaintenancemanagementModule
 
   ],
   bootstrap: [AppComponent]
