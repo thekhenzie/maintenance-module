@@ -1,0 +1,53 @@
+<div class="card card-outline-info" disabled>
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Create Inspection Order</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-material row" [formGroup]="createInspecForm" (ngSubmit)="getPolicy()" id="form-section">
+      <div class="form-group col-lg-9 m-t-20">
+        <input type="text" formControlName="policyNumber" class="form-control form-control-line" placeholder="Input Policy Number">
+        <div *ngIf="hasError('policyNumber')" class="form-control-feedback text-red">Policy Number is required.</div>
+      </div>
+      <div class="form-group col-lg-4 m-t-20">
+        <input type="text" formControlName="insuredFirstName" class="form-control form-control-line" placeholder="Input First Name">
+        <div *ngIf="hasError('insuredFirstName')" class="form-control-feedback text-red">First name is required.</div>
+      </div>
+      <div class="form-group col-lg-3 m-t-20">
+        <input type="text" formControlName="insuredMiddleName" class="form-control form-control-line" placeholder="Input Middle Name">
+      </div>
+      <div class="form-group col-lg-3 m-t-20">
+        <input type="text" formControlName="insuredLastName" class="form-control form-control-line" placeholder="Input Last Name">
+        <div *ngIf="hasError('insuredLastName')" class="form-control-feedback text-red">Last name is required.</div>
+      </div>
+      <div class="form-group col-lg-9 m-t-20">
+        <input type="text" formControlName="address1" class="form-control form-control-line" placeholder="Input Street Address 1">
+        <div *ngIf="hasError('address1')" class="form-control-feedback text-red">Street Address 1 is required.</div>
+      </div>
+      <div class="form-group col-lg-9 m-t-20">
+        <input type="text" formControlName="address2" class="form-control form-control-line" placeholder="Input Street Address 2">
+      </div>
+      <div class="form-group col-lg-4 m-t-20">
+        <select name="State" class="custom-select" formControlName="stateId" (change)="filterCities()">
+          <option value="" disabled="true">Select State</option>
+          <option *ngFor="let state of states" [ngValue]="state">{{state.name}}</option>
+        </select>
+        <div *ngIf="hasError('stateId')" class="form-control-feedback text-red">State is required.</div>
+      </div>
+      <div class="form-group col-lg-2 m-t-20">
+        <select name="State" class="custom-select" formControlName="cityId" (change)="getCity()">
+          <option value="" disabled selected>Select City</option>
+          <option *ngFor="let city of cities" [ngValue]="city">{{city.name}}</option>
+        </select>
+        <div *ngIf="hasError('cityId')" class="form-control-feedback text-red">City is required.</div>
+      </div>
+      <div class="form-group col-lg-3 m-t-20">
+        <input type="text" class="form-control form-control-line" placeholder="Zip Code" formControlName="zipcode" (input)="getZipcode()">
+        <div *ngIf="hasError('zipcode')" class="form-control-feedback text-red">Zipcode is required.</div>
+      </div>
+      <div class="form-group col-lg-12 m-t-20">
+        <button type="submit" class="btn btn-success" (click)="getPolicy()">
+          <i class="fa fa-download"></i> Get Policy</button>
+      </div>
+    </div>
+  </div>
+</div>

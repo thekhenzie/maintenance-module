@@ -1,0 +1,35 @@
+<div class="break-after" style="margin-top: 5%">
+  <div style="text-align: center;">
+    <div class="header-title-images">
+      <img src="https://rivpartners.com/wp-content/uploads/logo@2x.png"><br><br><br>
+      <img *ngIf="reportTitleViewModel.photo" src="{{reportTitleViewModel.photo}}" width="570" height="500">
+    </div>
+    <div class="header-title-texts" style="margin-top: 5%;">
+      <h1 class="cover-title">Risk Management Report</h1>
+      <h2 class="label-font">Prepared For:</h2>
+      {{reportTitleViewModel.insuredFullname}}<br>
+      {{reportTitleViewModel.insuredAddress}}<br>
+      {{reportTitleViewModel.insuredCityStateZipCode}}
+    </div>
+  </div>
+
+  <div style="margin-top: 5%">
+    <div style="float:left; margin-left: 5%;">
+      Inspected By:<br>
+      {{reportTitleViewModel.inspectorFullName}}, Wildfire Specialist<br>
+      {{reportTitleViewModel.inspectorEmail}}<br>
+      {{reportTitleViewModel.inspectorMobileNumber}}
+    </div>
+
+    <div style="float:right; margin-right: 20%;">
+      Referring Agent:<br>
+      {{reportTitleViewModel.agentName}}<br>
+      {{reportTitleViewModel.agencyName}}<br>
+      {{reportTitleViewModel.agentPhoneNumber}}
+    </div>
+  </div>
+  <div style="text-align: center; margin-top:25%">
+    Date of Inspection: {{reportTitleViewModel.inspectionDate | date:'LLLL d, yyyy'}}<br>
+    Policy #: {{reportTitleViewModel.policyNumber}}
+  </div>
+</div>

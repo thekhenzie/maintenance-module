@@ -1,0 +1,170 @@
+<p-panel>
+  <div class="ui-g">
+    <p-table #pTable id="inspectionTable" [value]="orderManagementList" (onLazyLoad)="paginate($event)" [loading]="showTableLoading"
+      [totalRecords]="totalRecord">
+      <ng-template pTemplate="caption">
+        <div class="row">
+          <div class="col col-lg-12 col-md-12">
+            <!-- <h4 class="filter-header-label pull-left">Filter By:</h4> -->
+            <div class="pull-left">
+              <input (keypress)="searchByEnterKey($event)" size="32" type="text" pInputText placeholder="&#xF002; Search" [(ngModel)]="searchFilter"
+                class="search-filter has-font-awesome-icon" />
+              <button pButton type="button" icon="fa-search" (click)="searchOrderManagement()"></button>
+            </div>
+            <!-- <div class="pull-right">
+                <p-button *ngIf="auth.isAuthorizeToAccessIOCreation(auth.currentUserRole)" icon="fa fa-fw fa-plus" label="Create IO" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="/order-management/inspection-order/create/policyXML">
+                </p-button>
+            </div> -->
+          </div>
+        </div>
+        <div class="row advance-filter">
+          <div class="col col-lg-6 col-md-6">
+            <span class="filter-field-container">
+              <span class="col-form-label">Days</span>
+              <span class="field">
+                <p-dropdown class="leftalign" [options]="days" [showClear]="true" [(ngModel)]="selectedDays" (onChange)="resetTable()" [style]="{'width':'250px'}"
+                  placeholder="Select Days"></p-dropdown>
+              </span>
+            </span>
+            <div class="clear"></div>
+          </div>
+          <div class="col col-lg-6 col-md-6">
+            <span class="filter-field-container">
+              <span class="col-form-label">Inspection Status</span>
+              <span class="field">
+                <p-dropdown class="leftalign" [options]="inspectionStatus" [showClear]="true" [autoWidth]="true" optionLabel="name" [(ngModel)]="selectedStatus"
+                  [style]="{'width':'250px'}" (onChange)="showOrHideDateFilter()" placeholder="Select inspection status"></p-dropdown>
+              </span>
+            </span>
+            <div class="clear"></div>
+          </div>
+          <div class="col col-lg-6 col-md-6">
+            <span class="filter-field-container">
+              <span class="col-form-label">Inspector</span>
+              <span class="field">
+                <p-dropdown class="leftalign" [options]="inspectorList" [showClear]="true" [autoWidth]="false" [style]="{'width':'250px'}"
+                  [(ngModel)]="selectedInspector" (onChange)="resetTable()" placeholder="Select inspector"></p-dropdown>
+              </span>
+            </span>
+            <div class="clear"></div>
+          </div>
+          <div class="col col-lg-6 col-md-6">
+            <span class="filter-field-container">
+              <span class="col-form-label">Inspection Date</span>
+              <span class="field">
+                <p-calendar class="leftalign" [disabled]="!filterByDate" [utc]="true" dataType="string" [(ngModel)]="rangeDates" [monthNavigator]="true"
+                  [yearNavigator]="true" yearRange="2000:2030" showButtonBar="true" (onSelect)="filterOrderManagement($event)"
+                  (onClearClick)="clearFilterDate()" selectionMode="range" readonlyInput="true" [inputStyle]="{'width':'250px'}"></p-calendar>
+              </span>
+            </span>
+            <div class="clear"></div>
+          </div>
+          <div class="col col-lg-6 col-md-6">
+            <span class="filter-field-container">
+              <span class="col-form-label">Inception Date</span>
+              <span class="field">
+                <p-calendar class="leftalign" [utc]="true" dataType="string" [(ngModel)]="inceptionRangeDates" [monthNavigator]="true" [yearNavigator]="true"
+                  yearRange="2000:2030" showButtonBar="true" (onSelect)="filterByInceptionDate($event)" (onClearClick)="clearFilterDate()"
+                  [inputStyle]="{'width':'250px'}" selectionMode="range" readonlyInput="true"></p-calendar>
+              </span>
+            </span>
+            <div class="clear"></div>
+          </div>
+          <div class="col col-lg-6 col-md-6">
+            <span class="filter-field-container">
+              <span class="col-form-label">Mitigation Status</span>
+              <span class="field">
+                <p-dropdown class="leftalign" [options]="mitigationStatus" [showClear]="true" optionLabel="name" [(ngModel)]="selectedMitigation"
+                  (onChange)="resetTable()" placeholder="Select mitigation status" [style]="{'width':'250px'}"></p-dropdown>
+              </span>
+            </span>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-lg-12 col-md-12">
+            <div class="pull-right">
+              <p-button icon="fa fa-fw mdi mdi-notification-clear-all" label="Clear All" (click)="clearFilter()" styleClass="filter-buttons">
+              </p-button>
+            </div>
+            <div style="clear: both"></div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+            <ng-container *ngSwitchDefault>
+              <th [pSortableColumn]="col.field" [pSortableColumnDisabled]="!col.sortable" [style.width]="col.renderStyleWidth()">
+                {{col.header}}
+                <ng-container *ngIf="col.sortable">
+                  <p-sortIcon [field]="col.field"></p-sortIcon>
+                </ng-container>
+              </th>
+            </ng-container>
+          </ng-container>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns" let-i="rowIndex">
+        <tr>
+          <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+            <ng-container *ngSwitchCase="'item'">
+              <td *ngIf="col.visible">
+                {{firstRowOffset + i + 1}}
+              </td>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+              <td class="tootlip-ellipsis" title="{{rowData[col.field]}}" *ngIf="col.visible">
+                {{rowData[col.field]}}
+              </td>
+            </ng-container>
+            <ng-container *ngSwitchCase="'streetAddress1'">
+              <td class="tootlip-ellipsis" title="{{rowData['streetAddress1']}}, {{rowData['streetAddress2']}}, {{rowData['city']}}, {{rowData['state']}}, {{rowData['zipCode']}}"
+                *ngIf="col.visible">
+                {{rowData['streetAddress1']}} {{rowData['streetAddress2']}} {{rowData['city']}} {{rowData['state']}} {{rowData['zipCode']}}
+              </td>
+            </ng-container>
+            <ng-container *ngSwitchCase="'inspectionDate'">
+              <td class="tootlip-ellipsis" title="{{rowData[col.field] | date: utilityService.appSettings.defaultDateFormat }}" *ngIf="col.visible">
+                {{rowData[col.field] | date: utilityService.appSettings.defaultDateFormat }}
+              </td>
+            </ng-container>
+            <ng-container *ngSwitchCase="'inceptionDate'">
+              <td class="tootlip-ellipsis" title="{{rowData[col.field] | date: utilityService.appSettings.defaultDateFormat }}" *ngIf="col.visible">
+                {{rowData[col.field] | date: utilityService.appSettings.defaultDateFormat }}
+              </td>
+            </ng-container>
+            <ng-container *ngSwitchCase="'action'">
+              <td *ngIf="col.visible">
+                <a *ngIf="!isLocked(rowData)" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                  [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" 
+                  [routerLink]="['/order-management/inspection-order/', rowData.id]">
+                  <span class="fa mdi mdi-eye ui-clickable ui-button-icon-left"></span>
+                  <span class="ui-button-text ui-clickable">View</span>
+                </a>
+                <button pButton type="button" icon="fa fa-unlock-alt" label="Unlock" *ngIf="isLocked(rowData)" (click)="unlockIO(rowData)">
+                </button>
+              </td>
+            </ng-container>
+          </ng-container>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td [attr.colspan]="noRecordColspan">
+            No records found.
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <tr>
+          <td [attr.colspan]="noRecordColspan">
+            <div style="float: left; margin-top: 8px;">
+              Showing {{minItem}}-{{maxItem}} of {{totalRecord}} Orders
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</p-panel>

@@ -1,0 +1,10 @@
+<label>Risk Management Summary</label>
+<p-button [disabled]="!ioService.checkIOBasedOnRole(this.auth.currentUserRole)" data-toggle="modal" (click)="confirmGenerateFromData()" icon="fa fa-fw fa-plus" label="Generate from data"></p-button>
+<div [formGroup]="ioService.riskSummaryForm">
+  <textarea [readonly]="ioService.isFutureDate" rows="31" class="form-control" formControlName="riskSummary">
+  </textarea>
+</div>
+
+<p-confirmDialog></p-confirmDialog>
+<br>
+<br>

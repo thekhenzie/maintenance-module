@@ -1,0 +1,23 @@
+export const CategoryConstants = {
+    View: 'View',
+    CreatedIO: 'Created Inspection Order',
+    UpdatedIO: 'Updated Inspection Order',
+    CreatedNotes: 'Created Inspection Notes',
+    UpdatedNotes: 'Upated Inspection Notes',
+    CancelledCreatingNotes: 'Cancelled Creating Notes',
+    CancelledUpdatingNotes: 'Cancelled Updating Notes',
+    FilterByStatus: 'Filter by Inspection Status',
+    FilterByDays: 'Filter by Days',
+    FilterByMitigationStatus: 'Filter by Mitigation Status',
+    FilterByInspectionDate: 'Filter by Inspection Date',
+    UpdateUserCredential: 'Updated User Credenital',
+    UpdatedUserProfile: 'Updated User Profile',
+    CreatedUser: 'Created User',
+    CancelledCreatingUser: 'Cancelled Creating User',
+    FilterList: 'Filter List',
+    Generate: 'Generate',
+    Create: 'Create',
+    Update: 'Update',
+    Cancel: 'Cancel',
+    Delete: 'Delete'
+};

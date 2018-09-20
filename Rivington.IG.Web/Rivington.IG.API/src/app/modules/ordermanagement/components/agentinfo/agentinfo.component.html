@@ -1,0 +1,41 @@
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Agent Info</h4>
+  </div>
+  <div class="standard-height card-body">
+    <div [formGroup]="inspectionOrderService.agentForm">
+      <div class="row p-t-10">
+        <div class="col-5">
+          <label class="font-weight-normal">Agent Name: </label>
+        </div>
+        <div class="col-7">
+          <input class="form-control" type="text" pInputText formControlName="agentName" size="28">
+        </div>
+      </div>
+      <div class="row p-t-10">
+        <div class="col-5">
+          <label class="font-weight-normal">Agent Phone Number: </label>
+        </div>
+        <div class="col-7">
+          <input class="form-control" type="text" pInputText formControlName="agentPhoneNumber" size="28">
+        </div>
+      </div>
+      <div class="row p-t-10">
+        <div class="col-5">
+          <label class="font-weight-normal">Agency Name: </label>
+        </div>
+        <div class="col-7">
+          <input class="form-control" type="text" pInputText formControlName="agencyName" size="28">
+        </div>
+      </div>
+      <div class="row p-t-10">
+        <div class="col-5">
+          <label class="font-weight-normal">Agency Phone Number: </label>
+        </div>
+        <div class="col-7">
+          <input class="form-control" type="text" pInputText formControlName="agencyPhoneNumber" size="28">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

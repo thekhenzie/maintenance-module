@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-lg-12 col-md-12">
+            <app-inspectionordernav></app-inspectionordernav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-12 col-md-12">
+            <app-inspectionorderstatus (inspecOrderStatusForm)='getInspecOrderStatus($event)'></app-inspectionorderstatus>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-6 col-md-12">
+            <app-insuredinfo (insureInfoForm)='getinsuredForm($event)' (showMapItEventEmitter)="showMapItEvent($event)"></app-insuredinfo>
+        </div>
+        <div class="col col-lg-6 col-md-12">
+            <app-policy (policyFormValue)='getPolicyInfo($event)'></app-policy>
+        </div>
+    </div>
+    <div id="mapItContainer" class="row" *ngIf="mapItIsInitialized">
+        <div class="col col-lg-12 col-md-12">
+            <app-map-it [currentInspectionStatus]="inspectionOrderToEdit && inspectionOrderToEdit.policy && inspectionOrderToEdit.policy.inspectionStatus ? inspectionOrderToEdit.policy.inspectionStatus.id : ''"></app-map-it>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-6 col-md-12">
+            <app-agentinfo (agentInfoForm)='getAgentInfo($event)'></app-agentinfo>
+        </div>
+        <div *ngIf="!isNew" class="col col-lg-6 col-md-12">
+            <app-inspector [inspector] ='inspectorUserName' 
+                componentLabel = "Assign To:"
+                buttonLabel = "Select Inspector to Assign"
+                [isIOInfo] = "true"
+                (inspectorInfo) = 'getInspectorInfo($event)'></app-inspector>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-lg-4 col-lg-4 m-b-20">
+            <button [hidden]="!inspectionOrderService.checkIOBasedOnRole(this.auth.currentUserRole) && !auth.isInspectorManager(auth.currentUserRole) && !isNew" type="button" (click)="saveInspectionOrder()" class="btn btn-success btn-block pull-right">
+                <span>{{submitButtonText}}</span>
+            </button>
+        </div>
+    </div>
+</div>

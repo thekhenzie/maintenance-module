@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-12 col-md-12">
+      <app-inspectionordernav></app-inspectionordernav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-lg-12">
+        <app-inspectionorderstatus isChecklist="true"></app-inspectionorderstatus>
+    </div>
+</div>
+  <p-panel>
+    <div class="searchHeader">
+      <p-button icon="fa fa-fw fa-plus" (onClick)="newComment()" label="Add Note"></p-button>
+    </div>
+    <div class="ui-g">
+      <p-table #pTable id="inspectionTable" [value]="inspectionOrderNotesList" (onLazyLoad)="paginate($event)" [loading]="showTableLoading"
+        [totalRecords]="totalRecord">
+        <ng-template pTemplate="caption">
+          <div style="clear: both"></div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+              <ng-container *ngSwitchDefault>
+                <th [pSortableColumn]="col.field" [pSortableColumnDisabled]="!col.sortable" [style.width]="col.renderStyleWidth()">
+                  {{col.header}}
+                  <ng-container *ngIf="col.sortable">
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                  </ng-container>
+                </th>
+              </ng-container>
+            </ng-container>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-i="rowIndex">
+          <tr>
+            <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+              <ng-container *ngSwitchCase="'dateModified'">
+                <td *ngIf="col.visible">
+                  {{rowData[col.field] | date: utilityService.appSettings.defaultDateFormat }}
+                </td>
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                <td *ngIf="col.visible">
+                  {{rowData[col.field]}}
+                </td>
+              </ng-container>
+              <ng-container *ngSwitchCase="'action'">
+                <td *ngIf="col.visible">
+                  <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left" [disabled]="rowData['userName'] != username"
+                    (click)="editNotes(rowData)">
+                    <span class="fa fa-fw fa-edit ui-clickable ui-button-icon-left"></span>
+                    <span class="ui-button-text ui-clickable">Edit</span>
+                  </button>
+                  <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left" (click)="viewNotes(rowData)">
+                    <span class="fa mdi mdi-eye ui-clickable ui-button-icon-left"></span>
+                    <span class="ui-button-text ui-clickable">View</span>
+                  </button>
+                </td>
+              </ng-container>
+            </ng-container>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td [attr.colspan]="noRecordColspan">
+              No records found.
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-panel>
+</div>
+
+<app-inspection-notes-confirmation
+[display]="display"
+[viewOnly]="viewOnly"
+[isNewNote]="isNewNote"
+[selectedInspectionOrderNote]="selectedInspectionOrderNote"
+[commentSection]="commentSection"
+[noteSubject]="noteSubject"
+[indexOfNote]="indexOfNote"
+(closeModal)='getCloseModal($event)'
+(resetTable)='resetTable($event)'></app-inspection-notes-confirmation>
+
+<!-- <form [formGroup]="userform">
+<p-dialog  header="Notes" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" [closable]="false">
+    <p-panel>
+      <div>Subject</div>
+        <div class="form-group m-b-40">
+            <input [(ngModel)]="noteSubject" type="text" [readonly]="viewOnly"class="form-control" required id="subject" formControlName="subject" placeholder="Add subject here" autocomplete="nope" role="presentation">
+            <span class="bar"></span>
+          </div>
+        <div>Notes</div>
+        <div class="form-group m-b-40">
+            <textarea [(ngModel)]="commentSection" [readonly]="viewOnly" [rows]="5" [cols]="50" class="form-control" required id="comment" formControlName="comment" placeholder="Add note here"></textarea>
+            <span class="bar"></span>
+          </div>
+        <div class="note-footer">
+          <button pButton type="button" icon="fa-share-square" label="Submit" *ngIf="viewOnly==false" [disabled]="userform.invalid" (click)="addComment()"></button>
+          <button pButton type="button" icon="fa-times" label="Close" (click)="cancelComment()"></button>
+        </div>
+      </p-panel>            
+</p-dialog>
+</form>
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog> -->

@@ -1,0 +1,14 @@
+.si-container{
+    background-color: #f3f1f1;
+    width: 100%;
+    border: 2px solid black;
+    padding: 20px;
+}
+.button-width{
+    width: 70px;
+}
+.btn-success{
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}

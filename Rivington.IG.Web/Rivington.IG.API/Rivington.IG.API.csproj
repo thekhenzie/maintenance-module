@@ -1,0 +1,90 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Rivington.IG.API.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>Rivington.IG.API.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="dist\**" />
+    <Compile Remove="e2e\**" />
+    <Compile Remove="src\**" />
+    <Content Remove="dist\**" />
+    <Content Remove="e2e\**" />
+    <Content Remove="src\**" />
+    <EmbeddedResource Remove="dist\**" />
+    <EmbeddedResource Remove="e2e\**" />
+    <EmbeddedResource Remove="src\**" />
+    <None Remove="dist\**" />
+    <None Remove="e2e\**" />
+    <None Remove="src\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove=".angular-cli.json" />
+    <Content Remove="package-lock.json" />
+    <Content Remove="package.json" />
+    <Content Remove="proxy.config.json" />
+    <Content Remove="tsconfig.json" />
+    <Content Remove="tslint.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove=".editorconfig" />
+    <None Remove=".gitignore" />
+    <None Remove="karma.conf.js" />
+    <None Remove="logs\dummy.log" />
+    <None Remove="protractor.conf.js" />
+    <None Remove="README.md" />
+    <None Remove="Rivington.IG.Web.code-workspace" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="logs\dummy.log" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BrotliSharpLib" Version="0.3.0" />
+    <PackageReference Include="ElmahCore" Version="1.0.4" />
+    <PackageReference Include="Inflector" Version="1.0.0" />
+    <PackageReference Include="mapster" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
+    <PackageReference Include="NReco.PdfGenerator.LT" Version="1.1.15" />
+    <PackageReference Include="SoapCore" Version="0.9.8.7" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.1.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.8.2" />
+    <PackageReference Include="wilx.System.Linq.Dynamic.Core" Version="1.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>  
+	<None Include="wwwroot\index.html" />
+  </ItemGroup> 
+		
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\lib\ART.DLinqHelpers\ART.DynamicLinq.Core\ART.DynamicLinq.Core.csproj" />
+    <ProjectReference Include="..\Rivington.IG.Domain.Models\Rivington.IG.Domain.Models.csproj" />
+    <ProjectReference Include="..\Rivington.IG.Domain\Rivington.IG.Domain.csproj" />
+    <ProjectReference Include="..\Rivington.IG.Infrastructure.Persistence\Rivington.IG.Infrastructure.Persistence.csproj" />
+  </ItemGroup>
+</Project>

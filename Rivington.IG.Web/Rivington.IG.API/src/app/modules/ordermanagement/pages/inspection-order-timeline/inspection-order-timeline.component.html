@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-12 col-md-12">
+      <app-inspectionordernav></app-inspectionordernav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-lg-12">
+      <app-inspectionorderstatus isChecklist="true"></app-inspectionorderstatus>
+    </div>
+  </div>
+</div>
+
+<mgl-timeline [toggle]="toggle" [alternate]="alternate">
+  <mgl-timeline-entry *ngFor="let entry of entries">
+    <mgl-timeline-entry-header class="timeline-header">
+      <div>{{entry.header}}</div>
+    </mgl-timeline-entry-header>
+    <mgl-timeline-entry-content class="timeline-content">
+      <div>{{entry.content}}</div>
+    </mgl-timeline-entry-content>
+  </mgl-timeline-entry>
+</mgl-timeline>

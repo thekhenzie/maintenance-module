@@ -1,0 +1,86 @@
+<div class="card">
+  <div class="row" [formGroup]="inspectionOrderService.orderStatusForm">
+    <div class="col-lg-6 col-md-12">
+      <div class="p-10">
+        <span class="font-bold">Inspection Order Status:</span>
+        <input class="borderless-input color-gray" type="text" formControlName="inspectionStatusId" readonly>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <div *ngIf="isNew" class="p-10">
+        <span class=" font-bold">Date Created:</span>
+        <input class="borderless-input color-gray" type="text" formControlName="dateCreated" readonly>
+      </div>
+      <div *ngIf="!isNew" class="p-10">
+        <span class=" font-bold">Assigned Date:</span>
+        <input class="borderless-input color-gray" type="text" formControlName="assignedDate" readonly>
+      </div>
+    </div>
+    <div *ngIf="!isNew" class="col-lg-6 col-md-12">
+      <div class="p-10">
+        <span class="font-bold p-t-10">Inspection Date:</span>
+        <p-calendar class="ui-inputtext" [utc]="true" formControlName="inspectionDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" [disabled]="isChecklist"></p-calendar>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <div class="p-10">
+        <span class="font-bold p-t-10">Policy Number:</span>
+        <input class="borderless-input color-gray" type="text" formControlName="policyNumber" readonly>
+      </div>
+    </div>
+    <div *ngIf="inspectionOrderService.showReportAction && inspectionOrderService.inspectionOrder" class="col-lg-6 col-md-12">
+      <div class="p-10 pull-left">
+          <ng-container *ngIf="!isNew && inspectionOrderService.showAcceptRejectButton">
+            <span *ngIf="auth.currentUserRole && inspectionOrderService.checkIOBasedOnRole(auth.currentUserRole)" class="font-bold p-t-10"> Report Action:
+              <button pButton type="button" (click)="acceptReport()" label="Accept"></button>
+              <button pButton type="button" (click)="rejectReport()" label="Reject"></button>
+            </span>
+          </ng-container>
+      </div>
+    </div>
+    <ng-container *ngIf="inspectionOrderService.mitigationStatusId">
+      <div *ngIf="showMitigationAction() && inspectionOrderService.checkIOMitigationBasedOnRole(auth.currentUserRole)" class="col-lg-6 col-md-12">
+        <div class="p-10 pull-left">
+          <span class="font-bold p-t-10">Mitigation Action:
+              <button pButton 
+              [disabled]="enableAcceptButton()" 
+              type="button" (click)="setMitigationToCompleted()" label="Accept"></button>
+              <button pButton 
+              [disabled]="enableRejectButton()" 
+              type="button" (click)="setMitigationToOutstanding()" label="Reject"></button>
+          </span>
+        </div>
+      </div>
+    </ng-container>
+    <div class="col-lg-12 col-md-12">
+        <div class="p-10 pull-right">
+            <a href="/reporting/order-management/inspection-order/{{currentIOid}}" class="btn btn-info btn-block" target="_blank" pTooltip="Please make sure that you allow popups on this site." tooltipPosition="bottom">
+              <i class="fa fa-bar-chart-o"></i>
+              View Report
+            </a>
+        </div>
+      <!-- <ng-container *ngIf="inspectionOrderService.inspectionOrder">
+        <div *ngIf="inspectionOrderService.inspectionComplete" class="p-10 pull-right">
+          <a href="/reporting/order-management/inspection-order/{{currentIOid}}" class="btn btn-info btn-block" target="_blank" pTooltip="Please make sure that you allow popups on this site." tooltipPosition="bottom">
+            <i class="fa fa-bar-chart-o"></i>
+            View Report
+          </a>
+        </div>
+        <div *ngIf="inspectionOrderService.isIOScheduled" class="p-10 pull-right">
+          <button (click)="setInspectionStatusToPendingWriteUp()" class="btn btn-info btn-block">
+            Inspection Complete
+          </button>
+        </div>
+      </ng-container> -->
+    </div>
+  </div>
+</div>
+
+<app-inspection-notes-confirmation
+[pendUWR]="pendUWR"
+[outstandingQC]="outstandingQC"
+[display]="display"
+[viewOnly]="viewOnly"
+[isNewNote]="isNewNote"
+[selectedInspectionOrderNote]="selectedInspectionOrderNote"
+(closeModal)='getCloseModal($event)'></app-inspection-notes-confirmation>

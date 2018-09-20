@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="7.4.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\lib\ART.DLinqHelpers\ART.DynamicLinq.Core\ART.DynamicLinq.Core.csproj" />
+    <ProjectReference Include="..\Rivington.IG.Domain.Models\Rivington.IG.Domain.Models.csproj" />
+    <ProjectReference Include="..\Rivington.IG.Infrastructure\Rivington.IG.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

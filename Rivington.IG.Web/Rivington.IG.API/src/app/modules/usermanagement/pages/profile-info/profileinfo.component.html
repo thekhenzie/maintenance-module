@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-lg-12 col-md-12">
+            <app-user-profile-nav></app-user-profile-nav>
+        </div>
+    </div>
+    <div class="card card-outline-info">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <form [formGroup]="userform" id="form-section">
+                <div class="profile-photo">
+                    <img *ngIf="file" [src]="file | safeHtml" width="150" height="150" #uploadImage>
+                    <p-button *ngIf="file" [disabled]="!isActivated" (onClick)="removePhoto()" label="Remove Photo"></p-button>
+                </div>
+                <br>
+                <div class="profile-photo-input">
+                    <input [disabled]="!isActivated" type="file" name="file" (change)="getImageValue($event)" id="photo-upload" #inputImage/>
+                </div>
+                <br>
+                <div class="profile-info-title">Personal Information</div>
+                <br>
+                <div class="form-group m-b-40" [ngClass]="{ 'has-error has-feedback has-danger' : hasError('firstName') }">
+                    <label>First Name</label>
+                    <input [readonly]="!isActivated" type="text" class="form-control" required id="firstName" formControlName="firstName">
+                    <span class="bar"></span>
+                    <div *ngIf="hasError('firstName')" class="form-control-feedback">First Name is required</div>
+                </div>
+                <div class="form-group m-b-40">
+                    <label>Middle Name</label>
+                    <input [readonly]="!isActivated" type="text" class="form-control" id="middleName" formControlName="middleName">
+                </div>
+                <div class="form-group m-b-40" [ngClass]="{ 'has-error has-feedback has-danger' : hasError('lastName') }">
+                    <label>Last Name</label>
+                    <input [readonly]="!isActivated" type="text" class="form-control" required id="lastName" formControlName="lastName">
+                    <span class="bar"></span>
+                    <div *ngIf="hasError('lastName')" class="form-control-feedback">Last Name is required</div>
+                </div>
+                <br>
+                <div class="profile-info-title">Location</div>
+                <br>
+                <div class="form-group m-b-40" [ngClass]="{ 'has-error has-feedback has-danger' : hasError('streetAddress1') }">
+                    <label>Street Address 1</label>
+                    <input [readonly]="!isActivated" type="text" class="form-control" required id="streetAddress1" formControlName="streetAddress1">
+                    <span class="bar"></span>
+                    <div *ngIf="hasError('streetAddress1')" class="form-control-feedback">Street Address 1 is required</div>
+                </div>
+                <div class="form-group m-b-40">
+                    <label>Street Address 2</label>
+                    <input [readonly]="!isActivated" type="text" class="form-control" id="streetAddress2" formControlName="streetAddress2">
+                </div>
+                <div>
+                    <label>State</label>
+                    <p-dropdown [disabled]="!isActivated" [options]="states" formControlName="state" placeholder="Select State" class="w-100"></p-dropdown>
+                </div>
+                <br>
+                <div>
+                    <label>City</label>
+                    <p-dropdown [disabled]="!isActivated" [options]="cities" formControlName="city" placeholder="Select City" class="w-100"></p-dropdown>
+                </div>
+                <br>
+                <div class="form-group m-b-40" [ngClass]="{ 'has-error has-feedback has-danger' : hasError('zipCode') }">
+                    <label>Zip Code</label>
+                    <input [readonly]="!isActivated" type="text" class="form-control" required id="zipCode" formControlName="zipCode">
+                    <span class="bar"></span>
+                    <div *ngIf="hasError('zipCode')" class="form-control-feedback">Zip Code is required</div>
+                </div>
+                <br>
+                <div class="profile-info-title">Contacts</div>
+                <br>
+                <div class="form-group m-b-40" [ngClass]="{ 'has-error has-feedback has-danger' : hasError('phoneNumber') }">
+                    <label>Phone Number</label>
+                    <input [readonly]="!isActivated" type="text" class="form-control" required id="phoneNumber" formControlName="phoneNumber">
+                    <span class="bar"></span>
+                    <div *ngIf="hasError('phoneNumber')" class="form-control-feedback">Phone Number is required</div>
+                </div>
+                <div class="form-group m-b-40" [ngClass]="{ 'has-error has-feedback has-danger' : hasError('mobileNumber') }">
+                    <label>Mobile Number</label>
+                    <input [readonly]="!isActivated" type="text" class="form-control" required id="mobileNumber" formControlName="mobileNumber">
+                    <span class="bar"></span>
+                    <div *ngIf="hasError('mobileNumber')" class="form-control-feedback">Mobile Number is required</div>
+                </div>
+                <div class="form-group m-b-40" [ngClass]="{ 'has-error has-feedback has-danger' : hasError('email') }">
+                    <label>Email Address</label>
+                    <input [readonly]="!isActivated" type="text" class="form-control" required id="email" formControlName="email">
+                    <span class="bar"></span>
+                    <div *ngIf="hasError('email')" class="form-control-feedback">
+                        <span *ngIf="userform.controls['email'].errors['required']">Email Address is required</span>
+                        <span *ngIf="userform.controls['email'].errors['pattern']">Invalid Email Address Format</span>
+                    </div>
+                </div>
+
+                <div class="form-group m-b-40">
+                    <label>Account Status </label>
+                    <p-inputSwitch [disabled]="isNew" formControlName="isActivated" onLabel="Active" offLabel="Inactive"></p-inputSwitch>
+                </div>
+                <br>
+                <div class="note-footer">
+                    <button pButton type="button" icon="fa fa-pencil" label="Update Credenital" [disabled]="userform.invalid" (click)="updateCredential()"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+.inspec-bg{
+    padding: 5px 10px 5px 10px;
+}
+.borderless-input{
+    border: none;
+    border-color: transparent;
+}
+.color-gray{
+    color: #67757c;
+}
+.input-w-150{
+    width: 150px;
+}
+.ui-inputtext{
+    border: none;
+    border-color: transparent;
+    color: #67757c;
+}

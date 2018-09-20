@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-outline-info">
+      <form action="#" [formGroup]="wildFireService.wildfireAssessmentForms.externalFuelSource" class="card-body">
+        <div class="form-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Does the home have an external fuel source?</label>
+                <p-checkbox (onChange)="setWildFireValue('externalFuelSource', 'externalFuelSource')" [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.externalFuelSource.controls['externalFuelSource']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>External Fuel Source Type</label>
+                <p-multiSelect [disabled]="!wildFireService.isWildFireRequired || !wildFireService.externalFuelSource" [options]="externalFuelSourceType" formControlName="externalFuelSourceTypes" defaultLabel="Select External Fuel Source Type"
+                  maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>External Fuel Source Distance From Home in Feet</label>
+                <input [readonly]="!wildFireService.isWildFireRequired || !wildFireService.externalFuelSource" type="text" class="form-control int-only" maxlength="4" formControlName="externalFuelSourceDistanceFromHome"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Is there a Wood Stove or Wood Burning Fireplace?</label>
+                <p-checkbox [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.externalFuelSource.controls['woodStoveOrFireplace']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Where is the wood storage for the stove or fireplace located?</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="woodStorageLocation"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>What fire preventive mearures are in place?</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="firePeventiveMeasure"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

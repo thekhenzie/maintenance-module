@@ -1,0 +1,81 @@
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Insured Info</h4>
+  </div>
+  <div class="standard-height card-body">
+    <div [formGroup]="inspectionOrderService.insuredForm">
+      <div class="p-t-5">
+        <h4 class="box-title">Personal</h4>
+        <hr class="m-t-0">
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="firstName">First Name:</label>
+          <input class="borderless-input color-gray" type="text" formControlName="insuredFirstName" readonly>
+        </div>
+        <div class="col-md-6 p-t-5">
+          <label for="lastName">Last Name:</label>
+          <input class="borderless-input color-gray" type="text" formControlName="insuredLastName" readonly>
+        </div>
+        <div class="col-md-6 p-t-5">
+          <label for="middleName">Middle Name:</label>
+          <input class="borderless-input color-gray" type="text" formControlName="insuredMiddleName" readonly>
+        </div>
+      </div>
+      <div class=" m-t-10">
+        <h4 class="box-title">
+          Address
+        </h4>
+        <hr class="m-t-0">
+      </div>
+      <div class="row">
+        <div class="col-md-12 p-t-5">
+          <textarea class="borderless-input color-gray input-w" type="text" formControlName="address" rows="2" readonly></textarea>
+        </div>
+      </div>
+      <div class="row" *ngIf="!isNew">
+          <div class="col-md-6 p-t-5">
+            <a 
+              (click)="sendEvent()"
+              [ngClass]="{ 'disabled': !mapButtonsEnabled }"
+              class="btn btn-info btn-block"
+               target="_blank" 
+               [href]="mapButtonsEnabled ? mapLink : 'javascript:void(0)' | safeHtml">
+              <i class="fa fa-location-arrow"></i>
+              View in Google
+            </a>
+          </div>
+          <div class="col-md-6 p-t-5">
+            <button class="btn btn-info btn-block" [disabled]="!mapButtonsEnabled" (click)="toggleShowMapIt()">
+              <i class="ti-location-pin"></i>
+              Map It
+            </button>
+          </div>
+      </div>
+      <div class=" m-t-10">
+        <h4 class="box-title">Location Details</h4>
+        <hr class="m-t-0">
+      </div>
+      <div class="row">
+        <div class="col-2 p-t-5">
+          <label for="City">City: </label>
+        </div>
+        <div class="col-10 p-t-5">
+          {{inspectionOrderService.city.name}}
+        </div>
+        <div class="col-2 p-t-5">
+          <label for="State">State: </label>
+        </div>
+        <div class="col-10 p-t-5">
+          {{inspectionOrderService.state.name}}
+        </div>
+        <div class="col-2 p-t-5">
+          <label for="Zipcode">Zipcode: </label>
+        </div>
+        <div class="col-10 p-t-5">
+          {{inspectionOrderService.zipcode}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

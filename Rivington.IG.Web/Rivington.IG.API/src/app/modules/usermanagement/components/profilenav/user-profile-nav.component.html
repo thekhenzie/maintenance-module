@@ -1,0 +1,26 @@
+<div class="row db-head">
+    <div class="col-lg-3">
+      <span class="inspec-title">User's Details</span>
+    </div>
+    <div class="col-lg-6 offset-lg-3 nav">
+      <span class="col-lg-4 inspec-nav">
+        <a [routerLinkActiveOptions]="{exact: true}"
+          routerLinkActive="active"
+          [routerLink]="['/user-management/profile-info']">
+          Profile Info
+        </a>
+      </span>
+      <span class="col-lg-4 inspec-nav">
+          <a [routerLinkActiveOptions]="{exact: true}"
+            routerLinkActive="active"
+            [routerLink]="['/user-management/credential']">
+            Credential
+          </a>
+      </span>
+      <span class="col-lg-4 inspec-nav">
+        <a>
+          Inspection Order
+        </a>
+    </span>
+    </div>
+  </div>

@@ -1,0 +1,12 @@
+.db-head{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.inspec-title{
+    text-decoration: underline;
+    font-size: 20px;
+    font-weight: 500;
+}
+.search-field{
+    width: 250px;
+}

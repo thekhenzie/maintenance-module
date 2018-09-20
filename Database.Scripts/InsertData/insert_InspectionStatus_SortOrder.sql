@@ -1,0 +1,9 @@
+UPDATE InspectionStatus SET SortOrder = 100 WHERE Id= 'PA';
+UPDATE InspectionStatus SET SortOrder = 200 WHERE Id= 'RTS';
+UPDATE InspectionStatus SET SortOrder = 300 WHERE Id= 'S';
+UPDATE InspectionStatus SET SortOrder = 400 WHERE Id= 'PWU';
+UPDATE InspectionStatus SET SortOrder = 500 WHERE Id= 'PQC';
+UPDATE InspectionStatus SET SortOrder = 600 WHERE Id= 'PQCI';
+UPDATE InspectionStatus SET SortOrder = 700 WHERE Id= 'PUWR';
+UPDATE InspectionStatus SET SortOrder = 800 WHERE Id= 'UWI';
+UPDATE InspectionStatus SET SortOrder = 900 WHERE Id= 'UWA';

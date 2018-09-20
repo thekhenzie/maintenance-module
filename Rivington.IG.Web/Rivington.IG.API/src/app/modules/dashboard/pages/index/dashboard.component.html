@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row db-head">
+    <div class="col col-lg-12">
+      <span class="inspec-title">Inspection Dashboard</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-lg-8">
+      <div class="card">
+        <app-inspectiontable></app-inspectiontable>
+      </div>
+    </div>
+    <div class="col col-lg-4">
+        <app-inspector *ngIf="userRole != inspectorRole"
+          [inspector] ='inspectorName' 
+          componentLabel = "View As:"
+          buttonLabel = "Select Inspector to View"
+          [isIOInfo] = "false"
+          (inspectorInfo) = 'getInspector($event)'></app-inspector>
+      <div class="card">
+        <app-mitigationstatus></app-mitigationstatus>
+      </div>
+    </div>
+  </div>
+</div>

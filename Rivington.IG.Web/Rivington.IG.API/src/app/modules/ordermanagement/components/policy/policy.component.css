@@ -1,0 +1,17 @@
+.standard-height{
+    min-height: 575px;
+}
+.borderless-input{
+    border: none;
+    border-color: transparent;
+    width: 100%;
+}
+.input-w-100{
+    width: 100px;
+}
+.color-gray{
+    color: #67757c;
+}
+.text-red{
+    color: red;
+}

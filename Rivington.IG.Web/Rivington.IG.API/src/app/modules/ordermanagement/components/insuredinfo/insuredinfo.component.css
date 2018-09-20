@@ -1,0 +1,18 @@
+.standard-height{
+    min-height: 575px;
+}
+.borderless-input{
+    border: none;
+    border-color: transparent;
+    width: 100%;
+}
+.color-gray{
+    color: #67757c;
+}
+.p-t-5{
+    padding-top: 5px;
+}
+.input-w{
+    width: 100%;
+    height: 80px;
+}

@@ -1,0 +1,84 @@
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Policy</h4>
+  </div>
+  <div class="standard-height card-body">
+    <div [formGroup]="inspectionOrderService.policyForm">
+      <div class="p-t-10 row">
+        <div class="col-5">
+          <label>Policy Number:</label>
+        </div>
+        <div class="col-7">
+          <input class="borderless-input color-gray" type="text" formControlName="policyNumber" readonly>
+        </div>
+      </div>
+      <div class="p-t-10 row">
+        <div class="col-5">
+          <label>Inception Date:</label>
+        </div>
+        <div class="col-7">
+            <!-- <p-calendar class="leftalign" formControlName="inceptionDate" [utc]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" [inputStyle]="{'width':'277px'}"></p-calendar> -->
+          <p-calendar inputStyleClass="form-control" formControlName="inceptionDate" class="leftalign form-calendar" [utc]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+        </div>
+      </div>
+      <div class="p-t-10 row">
+        <div class="col-5">
+          <label>Coverage A:</label>
+        </div>
+        <div class="col-7">
+          <input class="form-control" type="text" pInputText pKeyFilter="int" formControlName="coverageA" size="20" maxlength="9">
+        </div>
+      </div>
+      <div class="p-t-10 row">
+        <div class="col-5">
+          <label>e2Value Replacement Cost Value:</label>
+        </div>
+        <div class="col-7">
+          <input class="form-control" type="text" pInputText pKeyFilter="int" formControlName="e2ValueReplacementCostValue" size="20" maxlength="9">
+        </div>
+      </div>
+      <div class="p-t-10 row">
+        <div class="col-5">
+          <label>ITV Percentage:</label>
+        </div>
+        <div class="col-7">
+          <input class="borderless-input color-gray" type="text" pInputText pKeyFilter="num" formControlName="itvPercentage" size="20" readonly>
+        </div>
+      </div>
+      <div class="p-t-20">
+        <label>Wildfire Assessment Required:</label>
+        <p-checkbox class="ml-3" binary="true" [formControl]="inspectionOrderService.policyForm.controls['wildfireAssessmentRequired']"></p-checkbox>
+      </div>
+      <div class="p-t-10 row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="propertyValue">Property Value</label>
+            <select class="custom-select" name="propertyValue" formControlName="propertyValueId" id="propertyValue">
+              <option *ngFor="let propValue of propertyValue" [ngValue]="propValue.id">{{propValue.name}}</option>
+            </select>
+            <div *ngIf="hasError('propertyValueId')" class="form-control-feedback text-red">Property Value is Required</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="propertyValue">Inspection Status</label>
+            <select class="custom-select" name="inspectionStatus" formControlName="inspectionStatusId" id="inspectionStatus">
+              <option *ngFor="let inspecStatus of inspectionStatus" [ngValue]="inspecStatus.id">{{inspecStatus.name}}</option>
+            </select>
+            <div *ngIf="hasError('inspectionStatusId')" class="form-control-feedback text-red">Inspection Status is Required</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="propertyValue">Mitigation Status</label>
+            <select class="custom-select" name="mitigationStatus" formControlName="mitigationStatusId" id="mitigationStatus">
+              <option *ngFor="let mitStatus of mitigationStatus" [ngValue]="mitStatus.id">{{mitStatus.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

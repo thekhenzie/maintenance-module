@@ -1,0 +1,83 @@
+<button pButton [disabled]="inspectionOrderService.isFutureDate || !inspectionOrderService.checkIOBasedOnRole(this.auth.currentUserRole)" data-toggle="modal" (click)="showAddPhoto(true)" icon="fa fa-fw fa-plus" label="Add Photo"></button>
+
+<p-dialog [formGroup]="propertyPhotoForm" header="{{dialogHeader}}" [(visible)]="display" [modal]="true" [responsive]="true" [closable]="false"
+  [width]="1000">
+  <div class="row">
+    <div class="col col-lg-7">
+      <div class="col-12 p-t-10">
+        <div *ngIf="file" class="img-container">
+          <img class="img-display" [src]="file | safeHtml" #uploadImage>
+        </div>
+      </div>
+      <div class="col-12 p-t-10">
+        <input type="file" name="file" (change)="getImageValue($event)" id="photo-upload" #inputImage/>
+      </div>
+    </div>
+    <div class="col col-lg-5">
+      <div class="col-12 p-t-10">
+        <label for="photoDescription">Photo Type</label>
+        <p-dropdown #typeDropDown class="w-100" [options]="photoTypeList" formControlName="photoTypeId" placeholder="Select Photo Type"
+          [showClear]="true"></p-dropdown>
+        <div *ngIf="hasError('photoTypeId')" class="form-control-feedback text-red">Photo Type is required.</div>
+      </div>
+      <div class="col-12 p-t-10">
+        <label for="photoDescription">Description</label>
+        <textarea name="photoDescription" class="input-w-350" type="text" formControlName="description"></textarea>
+        <div *ngIf="hasError('description')" class="form-control-feedback text-red">Description is required.</div>
+      </div>
+    </div>
+  </div>
+  <p-footer>
+    <button type="button" pButton icon="fa-check" (click)="SavePhoto()" label="Save"></button>
+    <button type="button" pButton icon="fa-close" (click)="showAddPhoto(false)" label="Close"></button>
+  </p-footer>
+</p-dialog>
+
+<br>
+<br>
+
+<p-confirmDialog></p-confirmDialog>
+
+<div *ngIf="propertyPhoto">
+  <div *ngFor="let keyGroup of Object.keys(propertyPhoto)">
+    <h4>{{keyGroup}}</h4>
+    <p-accordion [multiple]="true">
+      <div *ngFor="let keyType of Object.keys(propertyPhoto[keyGroup])">
+        <p-accordionTab header="{{keyType}}" [selected]="true">
+          <div *ngIf="propertyPhoto[keyGroup]" class="row el-element-overlay">
+            <div *ngFor="let propertyPhoto of propertyPhoto[keyGroup][keyType]" class="col-lg-3 col-md-6">
+              <div class="card">
+                <div class="el-card-item no-padding">
+                  <div class="el-card-avatar el-overlay-1">
+                    <div class="property-photo">
+                      <img class="fix-size" [src]="propertyPhoto.image.filePath | safeHtml" alt="user">
+                    </div>
+                    <div class="el-overlay">
+                      <ul class="el-info">
+                        <li>
+                          <button [disabled]="inspectionOrderService.isFutureDate || !inspectionOrderService.checkIOBasedOnRole(this.auth.currentUserRole)" pButton icon="icon-pencil" class="btn default btn-outline image-popup-vertical-fit" (click)="viewPhoto(propertyPhoto, keyGroup, keyType)"></button>
+                        </li>
+                        <li>
+                          <button [disabled]="inspectionOrderService.isFutureDate || !inspectionOrderService.checkIOBasedOnRole(this.auth.currentUserRole)" pButton icon="icon-trash" class="btn default btn-outline image-popup-vertical-fit" (click)="deletePhoto(propertyPhoto)"></button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="el-card-content">
+                    <div class="p-l-10 p-r-10 text-justify" title="{{propertyPhoto.description}}">
+                      <div class="block-with-text">
+                        <small>{{propertyPhoto.description}}</small>
+                      </div>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-accordionTab>
+      </div>
+    </p-accordion>
+    <br>
+  </div>
+</div>

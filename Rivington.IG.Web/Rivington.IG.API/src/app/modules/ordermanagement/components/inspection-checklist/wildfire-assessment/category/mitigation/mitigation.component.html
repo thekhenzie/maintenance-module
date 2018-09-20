@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col col-lg-12">
+    <app-photo-memo-crud 
+      getUrl="RetrieveWildfireAssessmentMitigationRequirements" 
+      postUrl="CreateWildfireAssessmentMitigationRequirement"
+      deleteUrl="DeleteWildfireAssessmentMitigationRequirement"
+      headerLabel="Mitigation Requirement"
+      addButtonLabel="Add Requirement"
+      [isChild]="false"
+      getUrlChild="RetrieveWildfireAssessmentChildMitigationRequirements" 
+      postUrlChild="CreateWildfireAssessmentChildMitigationRequirement"
+      deleteUrlChild="DeleteWildfireAssessmentChildMitigationRequirement"
+      headerLabelChild="Replies"
+      addButtonLabelChild="Add Reply"
+      [isWildFireMitigation]="true"
+      [isInsured]="false"></app-photo-memo-crud>
+  </div>
+  <div class="col col-lg-12">
+    <app-photo-memo-crud 
+      getUrl="RetrieveWildfireAssessmentMitigationRecommendations" 
+      postUrl="CreateWildfireAssessmentMitigationRecommendation"
+      deleteUrl="DeleteWildfireAssessmentMitigationRecommendation"
+      headerLabel="Mitigation Recommendations"
+      addButtonLabel="Add Recommendations"
+      [isChild]="false"
+      getUrlChild="RetrieveWildfireAssessmentChildMitigationRecommendations" 
+      postUrlChild="CreateWildfireAssessmentChildMitigationRecommendation"
+      deleteUrlChild="DeleteWildfireAssessmentChildMitigationRecommendation"
+      headerLabelChild="Replies"
+      addButtonLabelChild="Add Reply"
+      [isWildFireMitigation]="true"
+      [isInsured]="false"></app-photo-memo-crud>
+  </div>
+</div>

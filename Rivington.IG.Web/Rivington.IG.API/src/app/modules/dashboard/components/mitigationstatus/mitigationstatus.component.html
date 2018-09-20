@@ -1,0 +1,17 @@
+<div class="table-responsive">
+  <table class="table color-table info-table">
+    <thead>
+      <tr>
+        <th colspan="2">Mitigation Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let orderStatus of dashboardService.groupedMitigationStatus">
+        <td><a>{{orderStatus.status}}</a></td>
+        <td>
+          <span class="btn btn-rounded btn-secondary button-width" (click)="redirectWithStatus(orderStatus)">{{orderStatus.statusCount}}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

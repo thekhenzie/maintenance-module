@@ -1,0 +1,32 @@
+.filter-header-label {
+}
+
+.search-filter {
+    width: 500px;
+}
+
+.filter-field-container {
+    display: inline-block;
+}
+
+.col-form-label, span.field {
+    display: inline-block;
+    float: left;
+}
+.col-form-label {
+    font-size: 14px;
+    width: 120px;
+    text-align: left;
+}
+span.field {
+    display: inline-block;
+    width: 280px;
+    text-align: left;
+}
+.advance-filter {
+    margin-top: 5px;
+}
+
+.date-picker {
+    width: 250px;
+}

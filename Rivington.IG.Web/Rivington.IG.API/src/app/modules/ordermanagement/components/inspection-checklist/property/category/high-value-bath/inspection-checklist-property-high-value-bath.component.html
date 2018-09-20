@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <form action="#" [formGroup]="propertyService.propertyForms.highValueBath" class="card-body">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Number of Full Baths</label>
+                                <input [readonly]="ioService.isFutureDate || !propertyService.isHighValue" class="form-control int-only" maxlength="2" formControlName="numberofFullBath">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Number of Half Baths</label>
+                                <input [readonly]="ioService.isFutureDate || !propertyService.isHighValue" class="form-control int-only" maxlength="2" formControlName="numberofHalfBath">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Bathroom Floors</label>
+                                <p-multiSelect 
+                                    [options]="bathroomFloors" 
+                                    formControlName="bathroomFloors" 
+                                    defaultLabel="Select Bathroom Floors"
+                                    [disabled]="ioService.isFutureDate || !propertyService.isHighValue" 
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Bathroom Vanities</label>
+                                <p-multiSelect 
+                                    [options]="bathroomVanities" 
+                                    formControlName="bathroomVanities" 
+                                    defaultLabel="Select Bathroom Vanities"
+                                    [disabled]="ioService.isFutureDate || !propertyService.isHighValue" 
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Bathroom Counters</label>
+                                <p-multiSelect 
+                                    [options]="bathroomCounters" 
+                                    formControlName="bathroomCounters" 
+                                    defaultLabel="Select Bathroom Counters"
+                                    [disabled]="ioService.isFutureDate || !propertyService.isHighValue" 
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Bathroom Fixtures</label>
+                                <p-multiSelect 
+                                    [options]="bathroomFixtures" 
+                                    formControlName="bathroomFixtures" 
+                                    defaultLabel="Select Bathroom Fixtures"
+                                    [disabled]="ioService.isFutureDate || !propertyService.isHighValue" 
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Tubs & Showers</label>
+                                <p-multiSelect 
+                                    [options]="tubsAndShowers" 
+                                    formControlName="tubsAndShowers" 
+                                    defaultLabel="Select Tubs & Showers"
+                                    [disabled]="ioService.isFutureDate || !propertyService.isHighValue" 
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

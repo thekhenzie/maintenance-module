@@ -1,0 +1,369 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <form action="#" [formGroup]="propertyService.propertyForms.general" class="card-body">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Property Street Address 1</label>
+                                <input [readonly]="ioService.isFutureDate" type="text" class="form-control" formControlName="streetAddress1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Property Street Address 2</label>
+                                <input [readonly]="ioService.isFutureDate" type="text" class="form-control" formControlName="streetAddress2" autocomplete="nope" role="presentation">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Property State</label>
+                                <p-dropdown [options]="states" 
+                                    formControlName="stateId" 
+                                    placeholder="Select State"
+                                    [showClear]="true"
+                                    [disabled]="ioService.isFutureDate" 
+                                    class="w-100"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Property City</label>
+                                <p-dropdown [options]="propertyService.cities" 
+                                    formControlName="cityId" 
+                                    placeholder="Select City"
+                                    class="w-100"
+                                    [disabled]="ioService.isFutureDate" 
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Property Zip Code</label>
+                                <input [readonly]="ioService.isFutureDate" type="text" class="form-control" formControlName="zipCode">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Estimated Square Footage</label>
+                                <input [readonly]="ioService.isFutureDate" class="form-control int-only" maxlength="7" formControlName="estimatedSquareFootage">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Year Built</label>
+                                <input [readonly]="ioService.isFutureDate" class="form-control int-only" maxlength="4" formControlName="yearBuilt">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Has the home been built or renovated in the last 3 years?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('recentlyRenovated', 'recentlyRenovated')" [disabled]="ioService.isFutureDate" t class="ml-3" binary="true" [formControl]="propertyService.propertyForms.general.controls['recentlyRenovated']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Contractor Name</label>
+                                <input [readonly]="ioService.isFutureDate || !propertyService.recentlyRenovated" type="text" class="form-control" formControlName="contractorName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Contractor Phone</label>
+                                <input [readonly]="ioService.isFutureDate || !propertyService.recentlyRenovated" type="text" class="form-control" formControlName="contractorPhone" autocomplete="nope" role="presentation">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Roof Age</label>
+                                <input [readonly]="ioService.isFutureDate" class="form-control int-only" maxlength="2" formControlName="roofAge">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Water Heater Age</label>
+                                <input [readonly]="ioService.isFutureDate" class="form-control int-only" maxlength="2" formControlName="waterHeaterAge">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Major System Age</label>
+                                <input [readonly]="ioService.isFutureDate" class="form-control int-only" maxlength="2" formControlName="majorSystemAge">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Major System Description</label>
+                                <textarea [readonly]="ioService.isFutureDate" class="form-control" formControlName="majorSystemDescription"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Pre-1970 Updates?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('preUpdates', 'pre1970Updates')" [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.general.controls['pre1970Updates']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Pre-1970 Updates Description</label>
+                                <textarea [readonly]="ioService.isFutureDate || !propertyService.preUpdates" class="form-control" formControlName="pre1970UpdatesDescription"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Septic Tank?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('septicTank', 'septicTank')" [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.general.controls['septicTank']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Last Service Date</label>
+                                <textarea [readonly]="ioService.isFutureDate || !propertyService.septicTank" class="form-control" formControlName="lastServiceDate"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Prior Loss?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('priorLoss', 'priorLoss')" [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.general.controls['priorLoss']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Prior Loss Description</label>
+                                <textarea [readonly]="ioService.isFutureDate || !propertyService.priorLoss" class="form-control" formControlName="priorLossDescription"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Has the problem been completely repaired/resolved?</label>
+                                <p-checkbox [disabled]="ioService.isFutureDate || !propertyService.priorLoss" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.general.controls['problemResolved']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Occupancy Type</label>
+                                <p-dropdown [options]="occupancyTypes" 
+                                    formControlName="occupancyTypeId" 
+                                    placeholder="Select Occupancy Type"
+                                    class="w-100"
+                                    [disabled]="ioService.isFutureDate"
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Domestic Help</label>
+                                <p-dropdown [options]="domesticHelp" 
+                                    (onChange)="setDomesticHelpValue()"
+                                    formControlName="domesticHelpTypeId" 
+                                    placeholder="Select Domestic Help"
+                                    class="w-100"
+                                    [disabled]="ioService.isFutureDate"
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Domestic Help Type</label>
+                                <p-multiSelect 
+                                    [disabled]="!propertyService.domesticHelp"
+                                    [options]="domesticHelpTypes" 
+                                    formControlName="domesticHelpTypes" 
+                                    defaultLabel="Select Domestic Help Type"
+                                    [disabled]="ioService.isFutureDate"
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Fire Alarm</label>
+                                <p-dropdown [options]="fireAlarms" 
+                                    (onChange)="setFireAlarmValue()"
+                                    formControlName="fireAlarmId" 
+                                    placeholder="Select Fire Alarm"
+                                    class="w-100"
+                                    [disabled]="ioService.isFutureDate"
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Fire Alarm Type</label>
+                                <p-dropdown [options]="fireAlarmTypes" 
+                                    [disabled]="!propertyService.fireAlarm"
+                                    formControlName="fireAlarmTypeId" 
+                                    placeholder="Select Fire Alarm Type"
+                                    class="w-100"
+                                    [disabled]="ioService.isFutureDate"
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Smoke Only Alarm</label>
+                                <p-dropdown [options]="smokeOnlyAlarms" 
+                                    (onChange)="setSmokeAlarmValue()"
+                                    formControlName="smokeOnlyAlarmId" 
+                                    placeholder="Select Smoke Only Alarm"
+                                    class="w-100"
+                                    [disabled]="ioService.isFutureDate"
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Smoke Only Alarm Type</label>
+                                <p-dropdown [options]="smokeOnlyAlarmTypes" 
+                                    [disabled]="!propertyService.smokeAlarm"
+                                    formControlName="smokeOnlyAlarmTypeId" 
+                                    placeholder="Select Smoke Only Alarm Type"
+                                    class="w-100"
+                                    [disabled]="ioService.isFutureDate"
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Burglar Alarm</label>
+                                <p-dropdown [options]="burglarAlarms" 
+                                    (onChange)="setBurglarAlarmValue()"
+                                    formControlName="burglarAlarmId" 
+                                    placeholder="Select Burglar Alarm"
+                                    class="w-100"
+                                    [disabled]="ioService.isFutureDate"
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Burglar Alarm Type</label>
+                                <p-dropdown [options]="burglarAlarmTypes" 
+                                    [disabled]="!propertyService.burglarAlarm"
+                                    formControlName="burglarAlarmTypeId" 
+                                    placeholder="Select Burglar Alarm Type"
+                                    class="w-100"
+                                    [disabled]="ioService.isFutureDate"
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Wood Stove/Wood-Burning Fire Place?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('woodPlace', 'woodStoveOrWoodBurningFirePlace')" [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.general.controls['woodStoveOrWoodBurningFirePlace']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Wood Stove Location</label>
+                                <input [readonly]="ioService.isFutureDate || !propertyService.woodPlace" type="text" class="form-control" formControlName="woodStoveLocation">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Wood Stove Usage</label>
+                                <textarea [readonly]="ioService.isFutureDate || !propertyService.woodPlace" class="form-control" formControlName="woodStoveUsage"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Policy Premium Credits</label>
+                                <p-multiSelect 
+                                    [options]="policyPremiumCredits" 
+                                    formControlName="policyPremiumCredits" 
+                                    defaultLabel="Select Policy Premium Credit"
+                                    [disabled]="ioService.isFutureDate" 
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <div class="form-group has-danger">
+                                <label class="control-label">Last Name</label>
+                                <input type="text" id="lastName" class="form-control form-control-danger" placeholder="12n">
+                                <small class="form-control-feedback"> This field has error. </small> </div>
+                        </div> -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Wildfire Credits</label>
+                                <p-multiSelect 
+                                    [options]="wildfireCredits" 
+                                    formControlName="wildfireCredits" 
+                                    defaultLabel="Select Wildfire Credit"
+                                    [disabled]="ioService.isFutureDate" 
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

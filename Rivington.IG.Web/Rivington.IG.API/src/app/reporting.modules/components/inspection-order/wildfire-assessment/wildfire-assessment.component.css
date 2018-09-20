@@ -1,0 +1,26 @@
+td, tr {
+    border: 1px solid black;
+}
+
+.wildfire-title {
+    color: rgb(68, 114, 196) !important;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18pt;
+}
+
+.section-title {
+    font-weight: bold;
+    color: #4CAEE3;
+    font-size: 18pt;
+}
+
+table {
+    width: 1100px;
+    margin: auto;
+    padding: 10px;
+}
+
+h3 {
+    margin: auto;
+}

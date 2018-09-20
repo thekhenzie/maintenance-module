@@ -1,0 +1,47 @@
+<!-- Aerial View and Home Sketch -->
+<div class="keep-together break-after">
+  <p class="label-font center">Aerial View</p>
+  <div class="rel-photo margin-auto">
+    <img *ngIf="aerialViewPhoto" class="actual-aspect-ratio margin-center" [src]="aerialViewPhoto.image.filePath" alt="aerialViewPhoto">
+  </div>
+  <br>
+  <br>
+  <br>
+  <p class="label-font center">Home Sketch</p>
+  <div class="rel-photo margin-auto">
+    <img *ngIf="homeSketchPhoto" class="actual-aspect-ratio margin-center" [src]="homeSketchPhoto.image.filePath" alt="homeSketchPhoto">
+  </div>
+</div>
+
+<!-- Photos of Your Home and Property -->
+<div class="break-after m-b-10">
+  <p class="title-font center label-color">Photos of Your Home and Property</p>
+  <div *ngIf="propertyPhoto">
+    <div *ngFor="let keyGroup of Object.keys(propertyPhoto)">
+      <div *ngFor="let keyType of Object.keys(propertyPhoto[keyGroup])">
+        <div *ngFor="let propertyPhoto of propertyPhoto[keyGroup][keyType]">
+          <div *ngIf="propertyPhoto && propertyPhoto.photoTypeId != 'AR' && propertyPhoto.photoTypeId != 'HS' && propertyPhoto.photoTypeId != 'RC'"
+            class="fix-container m-t-10 keep-together">
+            <div class="row">
+              <div class="col-lg-5">
+                <div class="description-container">
+                  <div class="description margin-auto m-t-10">
+                    <p class="photo-type-font label-color">{{keyType}}</p>
+                    <p>{{propertyPhoto.description}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <div class="photo-container">
+                  <div class="photo-size margin-auto">
+                    <img class="actual-aspect-ratio margin-auto" [src]="propertyPhoto.image.filePath" alt="propertyPhoto">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

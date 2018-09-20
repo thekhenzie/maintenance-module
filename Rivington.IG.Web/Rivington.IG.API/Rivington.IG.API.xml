@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rivington.IG.API</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "M:Rivington.IG.API.Controllers.AccountController.GetEmail(Rivington.IG.API.ViewModel.UserViewModel)" -->
+        <member name="M:Rivington.IG.API.Controllers.UserController.Add(Rivington.IG.API.ViewModel.UserViewModel)">
+            <summary>
+                POST: api/user
+            </summary>
+            <returns>
+                Creates a new User and return it accordingly.
+            </returns>
+        </member>
+        <member name="T:Rivington.IG.API.EnableCorsAttribute">
+            <inheritdoc />
+        </member>
+        <member name="T:Rivington.IG.API.CompressContentAttribute">
+            <summary>
+            http://weblog.west-wind.com/posts/2012/Apr/28/GZipDeflate-Compression-in-ASPNET-MVC
+            for IResultFilter or IActionFilter
+            	public class CompressContentFilter
+            
+            	then
+            
+            	[ServiceFilter(typeof(CompressContentFilter))]
+            	public IActionResult GetInspectionList([FromBody] dynamic data)
+            </summary>
+        </member>
+    </members>
+</doc>

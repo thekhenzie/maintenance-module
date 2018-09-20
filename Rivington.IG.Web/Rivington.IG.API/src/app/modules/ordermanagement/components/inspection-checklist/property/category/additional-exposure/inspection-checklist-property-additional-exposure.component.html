@@ -1,0 +1,229 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <form action="#" [formGroup]="propertyService.propertyForms.additionalExposure" class="card-body">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Trampoline?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('trampoline', 'trampoline')" [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['trampoline']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Safety Netting?</label>
+                                <p-checkbox [disabled]="ioService.isFutureDate || !propertyService.trampoline" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['safetyNetting']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Bracing/Bolting?</label>
+                                <p-checkbox [disabled]="ioService.isFutureDate || !propertyService.trampoline" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['bracingBolting']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Skateboard Ramp?</label>
+                                <p-checkbox [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['skateboardRamp']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Other Attractive Nuisance?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('otherNuisance', 'otherAttractiveNuisance')" [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['otherAttractiveNuisance']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Other Attractive Nuisance Comments</label>
+                                <input [readonly]="ioService.isFutureDate || !propertyService.otherNuisance" type="text" class="form-control" formControlName="otherAttractiveNuisanceComment">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Adjacent Exposure?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('adjacentExposure', 'adjacentExposure')" [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['adjacentExposure']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Adjacent Exposure Comments</label>
+                                <input [readonly]="ioService.isFutureDate || !propertyService.adjacentExposure" type="text" class="form-control" formControlName="adjacentExposureComment">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Dogs?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('dogs', 'dog')" [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['dog']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Number of Dogs</label>
+                                <input [readonly]="ioService.isFutureDate || !propertyService.dogs" class="form-control int-only" maxlength="4" formControlName="numberofDog">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Dog Breed</label>
+                                <input [readonly]="ioService.isFutureDate || !propertyService.dogs" type="text" class="form-control" formControlName="dogBreed">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Dog Temperament</label>
+                                <p-dropdown [disabled]="ioService.isFutureDate || !propertyService.dogs" 
+                                    [options]="dogTemperaments" 
+                                    formControlName="dogTemperamentId" 
+                                    placeholder="Select Dog Temperament"
+                                    class="w-100"
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Bite History?</label>
+                                <p-checkbox [disabled]="ioService.isFutureDate || !propertyService.dogs" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['biteHistory']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Business/Agriculture on Premises?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('businessPremises', 'businessAgricultureonPremises')" [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['businessAgricultureonPremises']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Business/Agriculture Type</label>
+                                <input [readonly]="ioService.isFutureDate || !propertyService.businessPremises" type="text" class="form-control" formControlName="businessAgricultureType">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Customers on Site?</label>
+                                <p-dropdown [disabled]="ioService.isFutureDate || !propertyService.businessPremises" 
+                                    [options]="customerOnSites" 
+                                    formControlName="customerOnSiteId" 
+                                    placeholder="Select Customers on Site"
+                                    class="w-100"
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Number of Employees Working +10 Hours/Week</label>
+                                <p-dropdown [disabled]="ioService.isFutureDate || !propertyService.businessPremises" 
+                                    [options]="employee10HoursPerWeeks" 
+                                    formControlName="employee10HoursPerWeekId" 
+                                    placeholder="Select Number of Employees Working +10 Hours/Week"
+                                    class="w-100"
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Horses/Farm Animals on Premises?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('animalsOnPremises', 'horsesFarmAnimalsonPremise')" [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['horsesFarmAnimalsonPremise']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Number of Horses/Farm Animals</label>
+                                <input [readonly]="ioService.isFutureDate || !propertyService.animalsOnPremises" class="form-control int-only" maxlength="4" formControlName="horsesFarmAnimalCount">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Type of Farm Animals</label>
+                                <input [readonly]="ioService.isFutureDate || !propertyService.animalsOnPremises" type="text" class="form-control" formControlName="horsesFarmAnimalType">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Daycare on Site?</label>
+                                <p-checkbox [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['daycareonSite']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Is the home in an area prone to bear invasion?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('bearInvasion', 'bearInvasionConcern')" [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['bearInvasionConcern']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Bear Invasion Concerns Details</label>
+                                <p-multiSelect [disabled]="ioService.isFutureDate || !propertyService.bearInvasion" 
+                                    [options]="bearInvasionConcernDetails" 
+                                    formControlName="bearInvasionConcernDetails" 
+                                    defaultLabel="Select Bear Invasion Concerns Details"
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Additional Exposures - Additional Concerns?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('additionalConcern', 'additionalConcern')" [disabled]="ioService.isFutureDate" class="ml-3" binary="true" [formControl]="propertyService.propertyForms.additionalExposure.controls['additionalConcern']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Additional Exposures - Additional Comments</label>
+                                <textarea [readonly]="ioService.isFutureDate || !propertyService.additionalConcern" class="form-control" formControlName="additionalComment"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

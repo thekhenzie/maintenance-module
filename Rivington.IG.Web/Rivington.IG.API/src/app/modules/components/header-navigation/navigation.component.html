@@ -1,0 +1,127 @@
+<!-- ============================================================== -->
+<!-- Topbar header - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<header class="topbar">
+  <nav class="navbar top-navbar navbar-expand-md navbar-light">
+    <!-- ============================================================== -->
+    <!-- Logo -->
+    <!-- ============================================================== -->
+    <div class="navbar-header">
+      <a class="navbar-brand" [attr.href]="checkHomePath()">
+        <!-- Logo icon -->
+        <b>
+          <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+          <!-- Dark Logo icon -->
+          <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+          <!-- Light Logo icon -->
+          <!-- <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" /> -->
+          <img class="home light-logo" src="data:image/png;base64,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" />
+        </b>
+        <!--End Logo icon -->
+        <!-- Logo text -->
+        <span>
+          <!-- dark Logo text -->
+          <!-- <span class="app-logo dark-logo">IG4Ur<span class="home"></span></span> -->
+          <!-- <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
+          <!-- Light Logo text -->
+          <span class="app-logo light-logo">Rivington<br>Inspect</span>
+          <!-- <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /> -->
+        </span>
+      </a>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Logo -->
+    <!-- ============================================================== -->
+    <div class="navbar-collapse">
+      <!-- ============================================================== -->
+      <!-- toggle and nav items -->
+      <!-- ============================================================== -->
+      <ul class="navbar-nav mr-auto mt-md-0">
+        <!-- This is  -->
+        <li class="nav-item headerList">
+          <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)">
+            <i class="mdi mdi-menu"></i>
+          </a>
+        </li>
+        <li class="nav-item headerList">
+          <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)">
+            <i class="ti-menu"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- ============================================================== -->
+      <!-- User profile and search -->
+      <!-- ============================================================== -->
+      <ul class="navbar-nav my-lg-0">
+        <!-- ============================================================== -->
+        <!-- Profile -->
+        <!-- ============================================================== -->
+        <li *ngIf="!auth.isLoggedIn() && checkIfNotInsured()" class="nav-item dropdown">
+          <a [routerLink]="[accountLoginPath]">
+            <i class="icon-login"></i> Login
+          </a>
+          <!-- | <a [routerLink]="['/account/register']">
+            <span class='glyphicon glyphicon-log-in'></span> Register
+          </a> -->
+        </li>
+        <li *ngIf="auth.isLoggedIn() && userService.profilePhoto" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <img src="{{userService.profilePhoto}}" alt="user" class="profile-pic" width="30px" height="30px"/>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right scale-up">
+            <ul class="dropdown-user">
+              <li>
+                <div class="dw-user-box">
+                  <div class="u-img">
+                    <img src="{{userService.profilePhoto}}" alt="user">
+                  </div>
+                  <div class="u-text">
+                    <div class="word-break">
+                    <h4>{{userService.userAccount.firstName}} {{userService.userAccount.lastName}}</h4>
+                    <p class="text-muted">{{userService.userAccount.email}}</p>
+                    <a [routerLink]="['/user-management/profile-info']" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                  </div>
+                  </div>
+                </div>
+              </li>
+              <!-- <li role="separator" class="divider"></li>
+              <li>
+                  <a [routerLink]="['/user-management/profile-info']">
+                    <i class="ti-user"></i> My Profile
+                  </a>
+              </li> -->
+              <!-- <li>
+                <a href="#">
+                  <i class="ti-wallet"></i> My Balance</a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="ti-email"></i> Inbox</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a class="topbar-toggle-settings" href="#">
+                  <i class="ti-settings"></i> Account Setting</a>
+              </li> -->
+              <li role="separator" class="divider"></li>
+              <li>
+                <a (click)="auth.logoutThenRedirect(); false" href="#">
+                  <i class="fa fa-power-off"></i> Logout</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li *ngIf="auth.isLoggedIn() && !userService.profilePhoto" class="nav-item dropdown">
+          <a (click)="auth.logout()" style="color:white;" href="{{auth.insuredLogin}}">
+            <i class="fa fa-power-off"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<!-- ============================================================== -->
+<!-- End Topbar header -->
+<!-- ============================================================== -->
+

@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-outline-info">
+      <form action="#" [formGroup]="wildfireAssessmentService.wildfireAssessmentForms.windows" class="card-body">
+        <div class="form-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Does structure have windows that are susceptible to flame?</label>
+                <p-checkbox [disabled]="ioService.isFutureDate || !wildfireAssessmentService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildfireAssessmentService.wildfireAssessmentForms.windows.controls['windowSusceptibletoFlame']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Window Glass Type</label>
+                <p-multiSelect [disabled]="ioService.isFutureDate || !wildfireAssessmentService.isWildFireRequired" [options]="windowGlassType" formControlName="windowGlassTypes" defaultLabel="Select Window Glass Type" maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Window Framing Type</label>
+                <p-multiSelect [disabled]="ioService.isFutureDate || !wildfireAssessmentService.isWildFireRequired" [options]="windowFramingType" formControlName="windowFramingTypes" defaultLabel="Select Window Framing Type"
+                  maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Window Styles</label>
+                <p-multiSelect [disabled]="ioService.isFutureDate || !wildfireAssessmentService.isWildFireRequired" [options]="windowStyles" formControlName="windowStyles" defaultLabel="Select Window Styles" maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Window Screen Type</label>
+                <p-multiSelect [disabled]="ioService.isFutureDate || !wildfireAssessmentService.isWildFireRequired" [options]="windowScreenType" formControlName="windowScreenTypes" defaultLabel="Select Window Screen Type" maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Interior Window Covering Type</label>
+                <p-multiSelect [disabled]="ioService.isFutureDate || !wildfireAssessmentService.isWildFireRequired" [options]="interiorWindowCoveringType" formControlName="interiorWindowCoveringTypes" defaultLabel="Select Interior Window Covering Type"
+                  maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Exterior Window Covering Type</label>
+                <p-multiSelect [disabled]="ioService.isFutureDate || !wildfireAssessmentService.isWildFireRequired" [options]="exteriorWindowCoveringType" formControlName="exteriorWindowCoveringTypes" defaultLabel="Select Exterior Window Covering Type"
+                  maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Window Concerns Details</label>
+                <p-multiSelect [disabled]="ioService.isFutureDate || !wildfireAssessmentService.isWildFireRequired" [options]="windowConcernsDetails" formControlName="windowConcernsDetails" defaultLabel="Select Window Concerns Details"
+                  maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Window Notes</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildfireAssessmentService.isWildFireRequired" class="form-control" formControlName="windowNote"></textarea>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

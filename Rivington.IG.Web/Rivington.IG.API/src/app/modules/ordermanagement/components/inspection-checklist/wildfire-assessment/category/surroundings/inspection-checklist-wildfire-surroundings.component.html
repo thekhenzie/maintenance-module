@@ -1,0 +1,127 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-outline-info">
+      <form action="#" [formGroup]="wildFireService.wildfireAssessmentForms.surroundings" class="card-body">
+        <div class="form-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Is there combustible vegetation or combustible materials within 5 feet of the home (Foundation to Immediate
+                  Landscaped Area: 0-5 Feet Zone)?</label>
+                <p-checkbox [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.surroundings.controls['combustible05Feet']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Combustible 0-5 Feet Comments</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="combustible05FeetComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Is there combustible vegetation or combustible materials between 5 and 30 feet of the home (Immediate Landscaped
+                  Area to Extent of Home Ignition Zone: 5-30 Feet Zone)?</label>
+                <p-checkbox [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.surroundings.controls['combustible530Feet']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Combustible 5-30 Feet Comments</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="combustible530FeetComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Is there combustible vegetation or combustible materials between 30 and 100 feet of the home (Immediate Landscaped
+                  Area to Extent of Home Ignition Zone: 30-100 Feet Zone)?</label>
+                <p-checkbox [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.surroundings.controls['combustible30100Feet']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Combustible 30-100 Feet Comments</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="combustible30100FeetComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Are there additional structures on insured's property that could contribute to fire spread/behavior?</label>
+                <p-checkbox [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.surroundings.controls['additionalStructuresContributor']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Additional Structures Contributor Comments</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="additionalStructuresContributorComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Are there topographical or environmental features (slope, canyons, valleys) exist that could contribute to
+                  extreme wildfire behavior?</label>
+                <p-checkbox [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.surroundings.controls['topographicalEnvironmentalContributor']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Topographical Environmental Contributor Comments</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="topographicalEnvironmentalContributorComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Does volatile vegetation exist beyond the Home Ignation Zone (100+ Feet from Home)?</label>
+                <p-checkbox [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.surroundings.controls['volatileVegetationBeyond100Feet']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Volatile Vegetation Comments (Note distance, direction & fuels):</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="volatileVegetationBeyond100FeetComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Do neighboring residences exist within the Home Ignation Zone (
+                  <100 feet from home)?</label>
+                    <p-checkbox [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.surroundings.controls['neighboringResidence']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Neighboring Residences Comments</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="neighboringResidenceComment"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

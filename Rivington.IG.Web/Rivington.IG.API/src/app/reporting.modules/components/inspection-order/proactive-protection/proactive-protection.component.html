@@ -1,0 +1,55 @@
+<div class="break-after">
+    <div>
+        <img src="https://rivpartners.com/wp-content/uploads/logo@2x.png" width="285" height="65">
+        <br>
+        <br>
+        <h1>Proactive Protection</h1>
+        <p>
+            The following measures have been identified to help reduce the likelihood of a loss from occurring. The loss prevention solutions
+            proposed are based upon our knowledge of the most frequent causes of loss.
+        </p>
+
+        <h2 class="label-font">Required Actions:</h2>
+        <p>The following actions are required as a condition of maintaining your insurance coverage with Rivington Partners.</p>
+        <ul *ngFor="let mitigationRequirement of mitigationRequirements">
+            <li>{{mitigationRequirement.description}}</li>
+        </ul>
+
+        <div class="keep-together">
+            <h2 class="label-font">Suggested Actions:</h2>
+            <p>The following actions are provided as a suggestion to help you reduce the potential or severity of a loss..</p>
+            <ul *ngFor="let mitigationRecommendation of mitigationRecommendations">
+                <li>{{mitigationRecommendation.description}}</li>
+            </ul>
+    
+            <h3 class="label-font" style="text-align: center; color: red; margin-top: 50px">See the attached Wildfire Assessment Report for any Wildfire Mitigation items</h3>
+        </div>
+    </div>
+</div>
+
+<div class="break-after">
+    <div style="height: 449px">
+        <img src="https://rivpartners.com/wp-content/uploads/logo@2x.png" width="285" height="65">
+        <br>
+        <br>
+        <h3 class="label-font">The following policy premium credits were revealed upon inspection:</h3>
+        <ul *ngFor="let policyPremiumCredit of policyPremiumCredits">
+            <li>{{policyPremiumCredit}}</li>
+        </ul>
+    </div>
+    <div style="margin-top:70%">
+        <h3 class="label-font" style="text-align: center">**See Attached Report Photos**</h3>
+        <p>
+            <i>
+                The assessments, reports and recommendations regarding changes that should be considered to help 
+                protect your property are designed to provide additional protection in the event of wildfire. Even if every
+                 recommended step is taken, your property could still be destroyed as wildfire is unpredictable and can be 
+                 impossible to stop or control, no matter what mitigation efforts have been undertaken. Spinnaker 
+                 Insurance and/or Rivington Partners does not represent or warrant that taking the steps suggested can 
+                 or will protect your property from destruction by fire. No warranties or representations of any kind are 
+                 provided to the recipient of this evaluation. 
+            </i>
+        </p>
+        <p style="font-weight: bold;">See <a href="www.firewise.org">www.firewise.org</a> for more information on protecting your community and family from wildfires.</p>
+    </div>
+</div>

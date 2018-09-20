@@ -1,0 +1,11 @@
+<p-accordion [activeIndex]="accordionIndex" [multiple]="accordionIsMultiple" [lazy]="true" (onOpen)="tabOpenEvent($event)">
+  <ng-container *ngFor="let category of categories; let i = index">
+    <p-accordionTab [disabled]="category.disabled">
+      <p-header>
+        <i class="{{category.leftIcon}}"></i>
+        {{category.header}}
+      </p-header>
+      <dynamic-component-wrapper *ngIf="i == accordionIndex || renderedIndexes.indexOf(i) > -1" [type]="category.component"></dynamic-component-wrapper>
+    </p-accordionTab>
+  </ng-container>
+</p-accordion>

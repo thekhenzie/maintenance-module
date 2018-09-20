@@ -1,0 +1,13 @@
+.db-head{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.inspec-title{
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: 18px;
+}
+.inspec-nav{
+    font-weight: 500;
+    font-size: 14px;
+}

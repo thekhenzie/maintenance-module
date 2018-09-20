@@ -1,0 +1,461 @@
+<div class="break-after" *ngIf="wildfireViewModel">
+  <h2 class="title-font center label-color">
+    Wildfire Assessment
+  </h2>
+  <div class="wa-section">
+    <h3 class="section-title">
+      Roof
+    </h3>
+    <table class="custom-table" cellpadding="10">
+      <tr>
+        <td width="35%">Primary Roof Covering</td>
+        <td width="65%">{{replaceStringIfNullOrEmpty(wildfireViewModel.primaryRoofCoveringName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Secondary Roof Covering</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.secondaryRoofCoveringName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Other Roof Coverings</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.otherRoofTypeName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Roof Type</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.roofTypeName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Roof Concerns Details</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.roofConcernDetailsName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Are there combustible materials on the roof?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.combustibleMaterialsOnRoof)}}</td>
+      </tr>
+      <tr>
+        <td>Combustible Materials on Roof Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.combustibleMaterialsOnRoofComment, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Roof Venting</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.roofVentingName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Does venting have openings that could allow ember entry?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.ventingOpeningAllowEntry)}}</td>
+      </tr>
+      <tr>
+        <td>Venting/Mesh Covering Size Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.ventingCoveringsizeComment, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Gutters?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.gutter)}}</td>
+      </tr>
+      <tr>
+        <td>Gutter Type</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.gutterTypeName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Gutter Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.gutterComments, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Eaves Type</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.eavesTypeName, "None") }}</td>
+      </tr>
+      <tr>
+        <td>Do eaves have cracks and/or openings that would allow ember entry?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.eavesAllowEmberEntry)}}</td>
+      </tr>
+      <tr>
+        <td>Eaves Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.eavesComment, "None")}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="wa-section">
+    <h3 class="section-title">
+      Foundation To Frame
+    </h3>
+    <table class="custom-table" cellpadding="10">
+      <tr>
+        <td width="35%">Are there openings (vents/crawlspace) in the main structure that could allow ember entry?</td>
+        <td width="65%">{{booleanToYesOrNo(wildfireViewModel.openingsEmberEntry)}}</td>
+      </tr>
+      <tr>
+        <td>Openings Ember Entry Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.openingsEmberEntryComments, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Is the home elevated off the ground with combustible materials present?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.elevatedWithCombustibleMaterials)}}</td>
+      </tr>
+      <tr>
+        <td>Elevated with Combustible Materials Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.elevatedWithCombustibleMaterialsComments, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Foundation Type</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.foundationTypeName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Foundation Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.foundationTypeComment, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Framing Type</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.framingTypeName, "None")}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="wa-section">
+    <h3 class="section-title">
+      Exterior Siding
+    </h3>
+    <table class="custom-table" cellpadding="10">
+      <tr>
+        <td width="35%">Primary Exterior Wall Covering</td>
+        <td width="65%">{{replaceStringIfNullOrEmpty(wildfireViewModel.primaryExteriorWallCoveringName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Secondary Exterior Wall Covering</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.secondaryExteriorWallCoveringName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Other Wall Coverings</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.otherWallCoverings, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Non-Combustible Siding?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.nonCombustibleSiding)}}</td>
+      </tr>
+      <tr>
+        <td>Siding Condition Concerns?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.sidingConditionConcerns)}}</td>
+      </tr>
+      <tr>
+        <td>Siding Condition Concerns Details</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.sidingConditionConcernsDetails, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Siding Condition Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.sidingConditionComments, "None")}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="wa-section">
+    <h3 class="section-title">
+      Windows
+    </h3>
+    <table class="custom-table" cellpadding="10">
+      <tr>
+        <td width="35%">Does structure have windows that are susceptible to flame?</td>
+        <td width="65%">{{booleanToYesOrNo(wildfireViewModel.windowSusceptibleToFlame)}}</td>
+      </tr>
+      <tr>
+        <td>Window Glass Type</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.windowGlassTypeNames, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Window Framing Type</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.windowFramingTypeNames, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Window Styles</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.windowStylesName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Window Screens?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.windowScreens)}}</td>
+      </tr>
+      <tr>
+        <td>Window Screen Type</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.windowScreenTypeNames, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Interior Window Coverings?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.interiorWindowCoverings)}}</td>
+      </tr>
+      <tr>
+        <td>Interior Window Covering Type</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.interiorWindowCoveringTypeNames, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Exterior Window Coverings</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.exteriorWindowCoverings)}}</td>
+      </tr>
+      <tr>
+        <td>Exterior Window Covering Type</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.exteriorWindowCoveringTypeNames, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Window Concerns?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.windowConcerns)}}</td>
+      </tr>
+      <tr>
+        <td>Window Concerns Details</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.windowConcernDetails, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Window Notes</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.windowNotes, "None") }}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="wa-section">
+    <h3 class="section-title">
+      Decks &amp; Balconies
+    </h3>
+    <table class="custom-table" cellpadding="10">
+      <tr>
+        <td width="35%">Are there attached porches, decks or balconies?</td>
+        <td width="65%">{{booleanToYesOrNo(wildfireViewModel.attachedPorchesDecksOrBalconies)}}</td>
+      </tr>
+      <tr>
+        <td>Porch, Deck, Balcony Construction</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.porchDeckBalconyConstruction, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Is porch, deck or balcony covered?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.porchDeckBalconyCovered)}}</td>
+      </tr>
+      <tr>
+        <td>Covering Material</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.coveringMaterial, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Deck Condition Concerns?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.deckConditionConcerns)}}</td>
+      </tr>
+      <tr>
+        <td>Deck Condition Concerns Details</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.deckConditionConcernsDetailsName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Attached Structures Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.attachedStructuresComments, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Are there combustible materials ON the deck/balcony/porch?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.combustibleMaterialsOnDeck)}}</td>
+      </tr>
+      <tr>
+        <td>Combustibles ON Deck/Balcony/Porch Description</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.combustibleMaterialsOnDeckDescription, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Are there combustible materials UNDER the deck/balcony/porch?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.combustibleMaterialsUnderDeck)}}</td>
+      </tr>
+      <tr>
+        <td>Combustibles UNDER Deck/Balcony/Porch Description</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.combustibleMaterialsUnderDeckDescription, "None")}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="wa-section">
+    <h3 class="section-title">
+      Fencing &amp; Other Attachments
+    </h3>
+    <table class="custom-table" cellpadding="10">
+      <tr>
+        <td width="35%">Is there fencing attached or within 30 feet of the home?</td>
+        <td width="65%">{{booleanToYesOrNo(wildfireViewModel.fencingWithin30Feet)}}</td>
+      </tr>
+      <tr>
+        <td>Fencing Type</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.fencingTypeNames, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Fence Condition Concerns?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.fenceConditionConcerns)}}</td>
+      </tr>
+      <tr>
+        <td>Fence Condition Concerns Details</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.fenceConditionconcernDetailsName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Fence Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.fenceComments, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Other Attachments?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.otherAttachments)}}</td>
+      </tr>
+      <tr>
+        <td>Other Attachments Type</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.otherAttachmentTypesName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Outbuildings?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.outbuilding)}}</td>
+      </tr>
+      <tr>
+        <td>Outbuilding Details</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.outbuildingDetailNames, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Other Detached Structures?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.otherDetachedStructures)}}</td>
+      </tr>
+      <tr>
+        <td>Other Detached Structures Details</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.otherDetachedStructureDetailsName, "None")}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="wa-section">
+    <h3 class="section-title">
+      Surroundings
+    </h3>
+    <table class="custom-table" cellpadding="10">
+      <tr>
+        <td width="35%">Is there combustible vegetation or combustible materials within 5 feet of the home (Foundation to Immediate Landscaped
+          Area: 0-5 Feet Zone)?</td>
+        <td width="65%">{{booleanToYesOrNo(wildfireViewModel.combustible05Feet)}}</td>
+      </tr>
+      <tr>
+        <td>Combustible 0-5 Feet Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.combustible05FeetComment, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Is there combustible vegetation or combustible materials between 5 and 30 feet of the home (Immediate Landscaped
+          Area to Extent of Home Ignition Zone: 5-30 Feet Zone)?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.combustible530Feet)}}</td>
+      </tr>
+      <tr>
+        <td>Combustible 5-30 Feet Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.combustible530FeetComment, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Is there combustible vegetation or combustible materials between 30 and 100 feet of the home (Immediate Landscaped
+          Area to Extent of Home Ignition Zone: 30-100 Feet Zone)?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.combustbile30100Feet)}}</td>
+      </tr>
+      <tr>
+        <td>Combustible 30-100 Feet Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.combustible30100Feetcomments, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Are there additional structures on insured's property that could contribute to fire spread/behavior?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.additionalstructureContributor)}}</td>
+      </tr>
+      <tr>
+        <td>Additional Structures Contributor Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.additionalstructureContributorComment, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Are there topographical or environmental features (slope, canyons, valleys) exist that could contribute to extreme
+          wildfire behavior?
+        </td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.topographicalEnvironmentContributor)}}</td>
+      </tr>
+      <tr>
+        <td>Topographical Environmental Contributor Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.topographicalEnvironmentContributorComment, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Does volatile vegetation exist beyond the Home Ignation Zone (100+ Feet from Home)?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.volatileVegetation)}}</td>
+      </tr>
+      <tr>
+        <td>Volatile Vegetation Comments (Note distance, direction &amp; fuels):</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.volatilevegetationComment, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Do neighboring residences exist within the Home Ignation Zone ( &lt;100 feet from home)?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.neighboringResidences)}}</td>
+      </tr>
+      <tr>
+        <td>Neighboring Residences Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.neighboringResidencesComment, "None")}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="wa-section">
+    <h3 class="section-title">
+      Access &amp; Fire Protection
+    </h3>
+    <table class="custom-table" cellpadding="10">
+      <tr>
+        <td width="35%">Are there address, driveway or other entrance concerns that could prevent timely emergency response?</td>
+        <td width="65%">{{booleanToYesOrNo(wildfireViewModel.timelyResponseConcern)}}</td>
+      </tr>
+      <tr>
+        <td>Timely Response Concern Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.timelyResponseConcernComment, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Are the address numbers too small, hard to read or improperly marked?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.addressHardToRead)}}</td>
+      </tr>
+      <tr>
+        <td>AddressReadability Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.addressReadabilitycomment, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Bridge Concern?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.bridgeConcern)}}</td>
+      </tr>
+      <tr>
+        <td>Bridge Concern Comments</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.bridgeConcernComment, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Responding Fire Department</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.respondingFireDepartment, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Fire Department Staffing</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.fireDepartmentStaffingName, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Fire Department Distance to Home</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.fireDepartmentDistanceToHome, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Fire Department Travel Time to Home (Minutes)</td>
+        <td>{{wildfireViewModel.fireDepartmentTravelTimeToHome}}</td>
+      </tr>
+      <tr>
+        <td>Nearest Fire Hydrant</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.nearestFireHydrant, "None")}}</td>
+      </tr>
+      <tr>
+        <td>Alternate Water Source If No Hydrant</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.alternateWaterSourceIfNoHydrant, "None")}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="wa-section">
+    <h3 class="section-title">
+      External Fuel Source
+    </h3>
+    <table class="custom-table" cellpadding="10">
+      <tr>
+        <td width="35%">Does the home have an external fuel source?</td>
+        <td width="65%">{{booleanToYesOrNo(wildfireViewModel.externalFuelSource)}}</td>
+      </tr>
+      <tr>
+        <td>External Fuel Source Type</td>
+        <td>{{replaceArrayIfNullOrEmpty(wildfireViewModel.externalFuelSourceTypeNames, "None")}}</td>
+      </tr>
+      <tr>
+        <td>External Fuel Source Distance From Home in Feet</td>
+        <td>{{wildfireViewModel.externalFuelSourceDistanceFromHome? wildfireViewModel.externalFuelSourceDistanceFromHome : 0}}</td>
+      </tr>
+      <tr>
+        <td>Is there a Wood Stove or Wood Burning Fireplace?</td>
+        <td>{{booleanToYesOrNo(wildfireViewModel.woodStoveFireplace)}}</td>
+      </tr>
+      <tr>
+        <td>Where is the wood storage for the stove or fireplace located?</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.woodStorageLocation, "None")}}</td>
+      </tr>
+      <tr>
+        <td>What fire preventive mearures are in place?</td>
+        <td>{{replaceStringIfNullOrEmpty(wildfireViewModel.firePreventiveMeasures, "None")}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

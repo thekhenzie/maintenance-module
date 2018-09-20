@@ -1,0 +1,64 @@
+  <!-- [label]="getLabel()" -->
+  <!-- -->
+<agm-marker *ngIf="inspectionOrder"
+  [latitude]="inspectionOrder.latitude"
+  [longitude]="inspectionOrder.longitude"
+  [visible]="inspectionOrder.visible"
+  [iconUrl]="getIconUrl()"
+  [label]="!isCurrentProperty ? { fontFamily: getFontFamily(), text: getLabel(), color: '#' + inspectionOrder.inceptionStatus.colorPalette } : ''" 
+  animation="DROP"
+  (markerClick)="clickedMarkerEvent(infoWindow)"
+  >
+  <agm-info-window #infoWindow>
+    <div class="map-info-window">
+      <div class="streetview-container">
+        <img 
+        [src]="getStreetViewImageUrl(inspectionOrder.longitude, inspectionOrder.latitude)" 
+        alt="{{inspectionOrder.location}}">
+      </div>
+      <div class="details-container">
+        <h4 class="insured-name">{{inspectionOrder.insuredName}}</h4>
+        <p class="details-body">
+          {{inspectionOrder.streetAddress1}}
+          {{inspectionOrder.streetAddress2}}
+          {{inspectionOrder.city}}
+          {{inspectionOrder.state}}
+          {{inspectionOrder.zipCode}}
+        </p>
+        <p class="details-footer">{{getDetailsFooter()}}</p>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </agm-info-window>
+</agm-marker>
+
+
+<!-- <agm-marker 
+*ngFor="let io of ioList; let i = index" 
+[latitude]="io.latitude"
+[longitude]="io.longitude"
+[label]="io.policyNumber"
+iconUrl="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|{{io.inceptionStatus.colorPalette}}"
+>
+  <app-map-it-info-window [inspectionOrder]="currentIo"></app-map-it-info-window>
+<agm-info-window>
+  <strong>{{i}}</strong>
+</agm-info-window>
+</agm-marker> -->
+<!-- 
+
+<agm-marker 
+*ngFor="let m of ioList; let i = index" 
+(markerClick)="clickedMarker(m.label, i)" 
+[latitude]="m.lat" 
+[longitude]="m.lng"
+[label]="m.label" 
+[markerDraggable]="m.draggable" 
+(dragEnd)="markerDragEnd(m, $event)"
+>
+
+<agm-info-window>
+  <strong>InfoWindow content</strong>
+</agm-info-window>
+
+</agm-marker> -->

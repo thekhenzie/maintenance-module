@@ -1,0 +1,26 @@
+<div class="m-b-10 break-after">
+  <div class="keep-together">
+    <p class="title-font center label-color">Mitigation Recommendations</p>
+    <div *ngFor="let mitigation of mitigationRecommendations">
+      <div *ngIf="mitigation" class="fix-container m-t-10 keep-together">
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="description-container">
+              <div class="description margin-auto m-t-10">
+                <p class="font-bold">Non-Wildfire Mitigation Recommendation</p>
+                <p>{{mitigation.description}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="photo-container">
+              <div class="photo-size margin-auto">
+                <img class="actual-aspect-ratio margin-auto" [src]="mitigation.image.filePath" alt="propertyPhoto">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

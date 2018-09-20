@@ -1,0 +1,11 @@
+<header *ngIf="showHeader">
+  <button *ngIf="!auth.isInsured" (click)="generatePDF()" title="Generate PDF" class="btn btn-info btn-block">
+    <i class="fa fa-bar-chart-o"></i>
+    Generate PDF
+  </button>
+  <button *ngIf="auth.isInsured" (click)="generatePDF()" title="Generate PDF" class="btn btn-info btn-block">
+    <i class="fa fa-bar-chart-o"></i>
+    Download Report
+  </button>
+</header>
+<router-outlet></router-outlet> 

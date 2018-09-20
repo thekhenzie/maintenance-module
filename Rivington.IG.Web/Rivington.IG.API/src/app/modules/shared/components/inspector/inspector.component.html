@@ -1,0 +1,63 @@
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">{{componentLabel}}</h4>
+  </div>
+  <div class="card-body">
+    <div class="col-12 standard-height">
+      <span>
+        {{inspector}}
+          <button [hidden]="checkIfButtonHidden()" *ngIf="inspector" type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn pull-right" data-toggle="tooltip"
+          data-original-title="Clear">
+          <i class="ti-close" aria-hidden="true" (click)="clearInspector()"></i>
+        </button>
+      </span>
+    </div>
+    <div class="p-t-10">
+      <div class="col-12">
+        <button [hidden]="checkIfButtonHidden()" class="btn btn-info btn-block" data-toggle="modal" data-target="#inspectorModal">{{buttonLabel}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="inspectorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-w-1000" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select Inspector</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-7"></div>
+          <div class="col-lg-5">
+            <div class="input-group">
+              <input type="text" (keypress)="searchByEnterKey($event)" class="form-control" placeholder="Search" [(ngModel)]="inspectorFilter">
+              <span class="input-group-btn">
+                <button class="btn btn-info" type="button" (click)="filterInspector()">Go!</button>
+                <button type="button" class="btn waves-effect waves-light btn-info" (click)="clearSearch()">Clear Search</button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="inspectorList" class="col-lg-12 m-t-20 scroll-overflow">
+          <div class="card card-body" (click)="getData(inspector)" data-dismiss="modal" *ngFor="let inspector of inspectorList">
+            <div class="row">
+              <div class="col-md-8 col-lg-9">
+                <h5 class="box-title m-b-0">Name: {{inspector.firstName}} {{inspector.lastName}}</h5>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!!!inspectorList || inspectorList.length == 0" class="col-lg-12 p-t-20">
+            No inspector found.
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

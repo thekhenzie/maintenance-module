@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script>
+function subst() {
+  var vars={};
+  var x=document.location.search.substring(1).split('&');
+  for(var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
+  var x=['page'];
+  for(var i in x) {
+    var y = document.getElementsByClassName(x[i]);
+    for(var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
+  }
+}
+</script>
+</head>
+<body style="border:0; margin: 0;" onload="subst()">
+    <br>
+    <br>
+    <table style="width: 100%">
+        <tr>
+          <td class="section"></td>
+          <td style="text-align:center">
+              Rivington Partners Specialty Homeowners – 1320 Willow Pass Rd, 6th Floor, Concord, CA 94520      
+          </td>
+          <td class="section"></td>
+        </tr>
+      </table>
+<table style="width: 100%">
+  <tr>
+    <td class="section"></td>
+    <td style="text-align:right">
+      Page <span class="page"></span>
+    </td>
+  </tr>
+</table>
+</body></html>

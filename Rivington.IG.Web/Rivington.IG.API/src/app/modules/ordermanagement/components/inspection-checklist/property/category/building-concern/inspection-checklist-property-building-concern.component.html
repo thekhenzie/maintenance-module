@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <form action="#" [formGroup]="propertyService.propertyForms.buildingConcern" class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Exterior Building Concern Details</label>
+                            <p-multiSelect 
+                                [options]="exteriorBuildingConcernDetails" 
+                                formControlName="exteriorBuildingConcernDetails" 
+                                defaultLabel="Select Exterior Building Concern Details"
+                                [disabled]="ioService.isFutureDate"
+                                maxSelectedLabels="9999"></p-multiSelect>
+                        </div>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Roof Concern Details</label>
+                            <p-multiSelect 
+                                [options]="roofConcernDetails" 
+                                formControlName="roofConcernDetails" 
+                                (onChange)="setRoofConcernDetailsValue()"
+                                defaultLabel="Select Roof Concern Details"
+                                [disabled]="ioService.isFutureDate"
+                                maxSelectedLabels="9999"></p-multiSelect>
+                        </div>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Electrical Concern Details</label>
+                            <p-multiSelect 
+                                [options]="electricalConcernDetails" 
+                                formControlName="electricalConcernDetails" 
+                                defaultLabel="Select Electrical Concern Details"
+                                [disabled]="ioService.isFutureDate"
+                                maxSelectedLabels="9999"></p-multiSelect>
+                        </div>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Plumbing Concern Details</label>
+                            <p-multiSelect 
+                                [options]="plumbingConcernDetails" 
+                                formControlName="plumbingConcernDetails" 
+                                defaultLabel="Select Plumbing Concern Details"
+                                [disabled]="ioService.isFutureDate"
+                                maxSelectedLabels="9999"></p-multiSelect>
+                        </div>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Other Structure Concern Details</label>
+                            <p-multiSelect 
+                                [options]="otherStructureConcernDetails" 
+                                formControlName="otherStructureConcernDetails" 
+                                defaultLabel="Select Other Structure Concern Details"
+                                [disabled]="ioService.isFutureDate"
+                                maxSelectedLabels="9999"></p-multiSelect>
+                        </div>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Surrounding Area Concern Details</label>
+                            <p-multiSelect 
+                                [options]="surroundingAreaConcernDetails" 
+                                formControlName="surroundingAreaConcernDetails" 
+                                defaultLabel="Select Surrounding Area Concern Details"
+                                [disabled]="ioService.isFutureDate"
+                                maxSelectedLabels="9999"></p-multiSelect>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

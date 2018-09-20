@@ -1,0 +1,50 @@
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar">
+  <!-- Sidebar scroll-->
+  <div class="scroll-sidebar">
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav">
+      <!-- <ul [hidden]="!auth.isLoggedIn()" id="sidebarnav"> -->
+      <ul id="sidebarnav">
+        <li>
+          <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="/dashboard">
+            <i class="mdi mdi-home"></i>
+            <span class="hide-menu">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="/order-management">
+            <i class="mdi mdi-gauge"></i>
+            <span class="hide-menu">Order Management</span>
+          </a>
+        </li>
+        <li [hidden]="!auth.isAuthorizedToAccesUserManagement()">
+          <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="/user-management">
+            <i class="mdi mdi-account"></i>
+            <span class="hide-menu">User Management</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- End Sidebar navigation -->
+  </div>
+  <!-- End Sidebar scroll-->
+  <!-- Bottom points-->
+  <div class="sidebar-footer">
+    <!-- item-->
+    <a *ngIf="auth.isLoggedIn()" (click)="auth.logoutThenRedirect(); false" href="#" class="link" data-toggle="tooltip" title="Logout">
+      <i class="mdi mdi-power"></i>
+    </a>
+    <!-- item-->
+    <!-- <a href="" class="sidebar-settings link" data-toggle="tooltip" title="Settings">
+      <i class="ti-settings"></i>
+    </a> -->
+  </div>
+  <!-- End Bottom points-->
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+

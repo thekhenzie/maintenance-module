@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>    
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="AppoinmentRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.6.0-preview-20180109-01" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.2.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
+	
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\lib\ART.DLinqHelpers\ART.DynamicLinq.Core\ART.DynamicLinq.Core.csproj" />
+    <ProjectReference Include="..\Rivington.IG.Domain.Models\Rivington.IG.Domain.Models.csproj" />
+    <ProjectReference Include="..\Rivington.IG.Domain.Test\Rivington.IG.Domain.Test.csproj" />
+    <ProjectReference Include="..\Rivington.IG.Domain\Rivington.IG.Domain.csproj" />
+    <ProjectReference Include="..\Rivington.IG.Infrastructure.Persistence\Rivington.IG.Infrastructure.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+  </ItemGroup>
+
+</Project>

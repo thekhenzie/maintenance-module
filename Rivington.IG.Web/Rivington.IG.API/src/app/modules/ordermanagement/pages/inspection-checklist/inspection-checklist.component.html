@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+      <div class="col col-lg-12">
+          <app-inspectionordernav></app-inspectionordernav>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col col-lg-12">
+          <app-inspectionorderstatus isChecklist="true"></app-inspectionorderstatus>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-4 col-md-4 col-xs-12">
+          <button [hidden]="!ioService.checkIOBasedOnRole(this.auth.currentUserRole)" type="button" (click)="updateIO()" class="btn btn-success btn-block" [disabled]="ioService.isFutureDate">
+            <i class="ti-save"></i>
+            Update Inspection Order
+          </button>
+      </div>
+      <div class="col-lg-4 col-md-4 col-xs-12">
+        <button *ngIf="ioService.showSubmitButton" [hidden]="!ioService.checkIOBasedOnRole(this.auth.currentUserRole)" (click)="addNote()" type="button" class="btn btn-success btn-block">
+        <i class="fa fa-share-square"></i>
+          Submit Report
+        </button>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col col-lg-12">
+          <app-inspection-checklist-tabs></app-inspection-checklist-tabs>
+      </div>
+  </div>
+</div>
+
+<app-inspection-notes-confirmation
+[inspectorToUW]="inspectorToUW"
+[pendingWriteUp]="pendingWriteUp"
+[display]="display"
+[viewOnly]="viewOnly"
+[isNewNote]="isNewNote"
+[selectedInspectionOrderNote]="selectedInspectionOrderNote"
+(closeModal)='getCloseModal($event)'></app-inspection-notes-confirmation>

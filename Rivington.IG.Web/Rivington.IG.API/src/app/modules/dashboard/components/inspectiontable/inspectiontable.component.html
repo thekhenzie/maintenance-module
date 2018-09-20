@@ -1,0 +1,43 @@
+<div class="table-responsive">
+  <table class="table color-table info-table">
+    <thead>
+      <tr>
+        <th>Inspection Status</th>
+        <th class="text-center">0-19 Days</th>
+        <th class="text-center">20-39 Days</th>
+        <th class="text-center">40 and above</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let orderStatus of dashboardService.groupedInspectionStatus">
+        <ng-container *ngIf="checkIfInspector(auth.currentUserRole, orderStatus.statusId)">
+          <td>
+            <a>{{orderStatus.status}}</a>
+          </td>
+          <td class="text-center">
+            <span *ngIf="orderStatus.zeroToNineteenDays != 0" (click)="redirectWithStatusAndDays(orderStatus.statusId, Object.keys(orderStatus)[2])"
+              class="btn btn-rounded btn-success button-width">{{orderStatus.zeroToNineteenDays}}</span>
+          </td>
+          <td class="text-center">
+            <span *ngIf="orderStatus.twentyToThirtyNineDays != 0" (click)="redirectWithStatusAndDays(orderStatus.statusId, Object.keys(orderStatus)[3])"
+              class="btn btn-rounded btn-warning button-width">{{orderStatus.twentyToThirtyNineDays}}</span>
+          </td>
+          <td class="text-center">
+            <span *ngIf="orderStatus.fortyToFiftyNineDays != 0" (click)="redirectWithStatusAndDays(orderStatus.statusId, Object.keys(orderStatus)[4])"
+              class="btn btn-rounded btn-danger button-width">{{orderStatus.fortyToFiftyNineDays}}</span>
+          </td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- <div class="si-container">
+  <div class="row">
+    <div class="col-lg-9">
+      <b>Sent to Insured</b>
+    </div>
+    <div class="col-lg-3 text-right">
+      &nbsp; {{dashboardService.linksSent}}
+    </div>
+  </div>
+</div> -->

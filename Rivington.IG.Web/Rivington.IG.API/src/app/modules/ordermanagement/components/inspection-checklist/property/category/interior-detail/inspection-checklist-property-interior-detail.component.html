@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <form action="#" [formGroup]="propertyService.propertyForms.interiorDetail" class="card-body">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Flooring Type</label>
+                                <p-multiSelect 
+                                    [options]="flooringTypes" 
+                                    formControlName="flooringTypes" 
+                                    defaultLabel="Select Flooring Type"
+                                    [disabled]="ioService.isFutureDate" 
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Kitchen - Bath Cabinet</label>
+                                <p-multiSelect 
+                                    [options]="kitchenBathCabinets" 
+                                    formControlName="kitchenBathCabinets" 
+                                    defaultLabel="Select Kitchen - Bath Cabinet"
+                                    [disabled]="ioService.isFutureDate" 
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Kitchen - Bath Counter</label>
+                                <p-multiSelect 
+                                    [options]="kitchenBathCounters" 
+                                    formControlName="kitchenBathCounters" 
+                                    defaultLabel="Select Kitchen - Bath Counter"
+                                    [disabled]="ioService.isFutureDate" 
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Quality Class Upgrades</label>
+                                <p-multiSelect 
+                                    [options]="qualityClassUpgrades" 
+                                    formControlName="qualityClassUpgrades" 
+                                    defaultLabel="Select Quality Class Upgrades"
+                                    [disabled]="ioService.isFutureDate" 
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Interior Details Comments</label>
+                                <textarea [readonly]="ioService.isFutureDate" class="form-control" formControlName="interiorDetailComment"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Type of Plumbing</label>
+                                <p-multiSelect 
+                                    [options]="typeOfPlumbings" 
+                                    formControlName="typeOfPlumbings" 
+                                    defaultLabel="Select Type of Plumbing"
+                                    [disabled]="ioService.isFutureDate" 
+                                    maxSelectedLabels="9999"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Electrical Service Amperage</label>
+                                <input [readonly]="ioService.isFutureDate" type="text" class="form-control" formControlName="electricalServiceAmperage">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Water Heater Location</label>
+                                <input [readonly]="ioService.isFutureDate" type="text" class="form-control" formControlName="waterHeaterLocation">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Laundry Location</label>
+                                <input [readonly]="ioService.isFutureDate" type="text" class="form-control" formControlName="laundryLocation">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

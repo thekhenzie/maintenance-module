@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-outline-info">
+      <form action="#" [formGroup]="wildFireService.wildfireAssessmentForms.fencingAndOtherAttachments" class="card-body">
+        <div class="form-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Is there fencing attached or within 30 feet of the home?</label>
+                <p-checkbox (onChange)="setWildFireValue('fencingWithin30Feet', 'fencingWithin30Feet')" [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.fencingAndOtherAttachments.controls['fencingWithin30Feet']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Fencing Type</label>
+                <p-multiSelect [disabled]="!wildFireService.isWildFireRequired || !wildFireService.fencingWithin30Feet" [options]="fencingType" formControlName="fencingTypes" defaultLabel="Select Fencing Type" maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Fence Condition Concerns Details</label>
+                <p-multiSelect [disabled]="!wildFireService.isWildFireRequired || !wildFireService.fencingWithin30Feet" [options]="fenceConditionConernsDetails" formControlName="fenceConditionConcernDetails" defaultLabel="Select Fence Condition Concerns Details"
+                  maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Fence Comments</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="fenceComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Other Attachments Type</label>
+                <p-multiSelect [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" [options]="otherAttachmentsType" formControlName="otherAttachmentTypes" defaultLabel="Select Other Attachments Type"
+                  maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Outbuilding Details</label>
+                <p-multiSelect [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" [options]="outbuildingDetails" formControlName="outbuildingDetails" defaultLabel="Select Outbuilding Details"
+                  maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Other Detached Structures Details</label>
+                <p-multiSelect [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" [options]="otherDetachedStructuresDetails" formControlName="otherDetachedStructuresDetails" defaultLabel="Select Other Detached Structures Details"
+                  maxSelectedLabels="9999"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

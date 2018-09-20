@@ -1,0 +1,11 @@
+language: c
+
+cache: apt
+
+install:
+  - sudo apt-get install mono-devel mono-gmcs nunit-console
+
+script:
+  - xbuild travis.proj
+  - nunit-console ./ART.DynamicLinq.Tests/bin/Debug/ART.DynamicLinq.Tests.dll
+

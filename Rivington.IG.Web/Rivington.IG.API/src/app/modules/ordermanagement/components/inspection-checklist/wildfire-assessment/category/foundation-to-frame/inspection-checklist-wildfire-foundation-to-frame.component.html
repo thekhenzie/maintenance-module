@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-outline-info">
+      <form action="#" [formGroup]="wildFireService.wildfireAssessmentForms.foundationToFrame" class="card-body">
+        <div class="form-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Are there openings (vents/crawlspace) in the main structure that could allow ember entry?</label>
+                <p-checkbox [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.foundationToFrame.controls['openingsEmberEntry']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Openings Ember Entry Comments</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="openingsEmberEntryComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Is the home elevated off the ground with combustible materials present?</label>
+                <p-checkbox [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.foundationToFrame.controls['elevatedwithCombustibleMaterial']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Elevated with Combustible Materials Comments</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="elevatedwithCombustibleMaterialsComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Foundation Type</label>
+                <p-dropdown [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" [options]="foundationType" formControlName="foundationTypeId" placeholder="Select Foundation Type" class="w-100"></p-dropdown>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Foundation Comments</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="foundationComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Framing Type</label>
+                <p-dropdown [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" [options]="framingType" formControlName="framingTypeId" placeholder="Select Framing Type" class="w-100"></p-dropdown>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<p-dialog header="Notes" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" [closable]="false">
+<form [formGroup]="userform">
+        <p-panel>
+            <div>Subject</div>
+            <div class="form-group m-b-40">
+                <input [(ngModel)]="noteSubject" type="text" [readonly]="viewOnly" class="form-control" required id="subject" formControlName="subject"
+                    placeholder="Add subject here" autocomplete="nope" role="presentation">
+                <span class="bar"></span>
+            </div>
+            <div>Notes</div>
+            <div class="form-group m-b-40">
+                <textarea [(ngModel)]="commentSection" [readonly]="viewOnly" [rows]="5" [cols]="50" class="form-control" required id="comment"
+                    formControlName="comment" placeholder="Add note here"></textarea>
+                <span class="bar"></span>
+            </div>
+            <div class="note-footer">
+                <button pButton type="button" icon="fa-share-square" label="Submit" *ngIf="viewOnly==false" [disabled]="userform.invalid"
+                    (click)="addComment()"></button>
+                <button pButton type="button" icon="fa-times" label="Close" (click)="cancelComment()"></button>
+            </div>
+        </p-panel>
+</form>
+</p-dialog>
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>

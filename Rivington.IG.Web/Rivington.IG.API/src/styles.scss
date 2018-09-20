@@ -1,0 +1,661 @@
+/* You can add global styles to this file, and also import other style files */
+.word-break {
+  word-break: break-all;
+}
+
+.user-management-inspector-list {
+  float: right !important;
+}
+
+.tootlip-ellipsis {
+  height: 20px;
+  width: 120px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.note-footer {
+  text-align: right !important;
+}
+
+.error-message {
+  color: #fc4b6c;
+}
+
+.left-align {
+  text-align: left !important;
+}
+
+.ui-messages {
+  margin: 1px 0;
+  padding: 0;
+}
+
+.centerButtons {
+  text-align: center !important;
+}
+
+.search-header {
+  float: right !important;
+  text-align: left ;
+  margin-bottom: 3px;
+}
+
+.search-header > span {
+  display: inline-block;
+}
+
+.buttonHeader {
+  float: right !important;
+}
+
+img.home {
+  width: 40px;
+  height: 40px;
+  /* background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCS…0ihMPdedDKh//vsxFDgJHgi8NGFEuwv3cYznmGEQn46gP4P6pw4hb2PTW6AAAAAElFTkSuQmCC); */
+  /* background-size: 40px 40px; */
+  display: inline-block;
+  margin-left: 4px;
+}
+
+span.app-logo {
+  font-weight: bold;
+  letter-spacing: 6px;
+  line-height: 1;
+  position: relative;
+  top: 12px;
+  text-align: left;
+
+  // img.home {
+  //   width: 32px;
+  //   height: 32px;
+  //   background-image: url(data:image/png;base64,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);
+  //   background-size: 32px 32px;
+  //   display: inline-block;
+  //   margin-left: 4px;
+  // }
+}
+
+.list-thumbnail-container {
+  position: relative;
+  margin: auto;
+  width: 150px;
+  height: 150px;
+}
+
+.list-thumbnail {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.image-preview-container {
+  height: 420px;
+  width: 560px;
+}
+
+.image-preview {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+.input-w-350{
+  width: 350px;
+  height: 100px;
+}
+
+.text-red{
+  color: red;
+}
+
+.img-container {
+  width: 400px;
+  height: 250px;
+}
+
+.img-display{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+/* ----------------------------------------------------------- */
+/* START material overrides that came from material horizontal */
+/* ----------------------------------------------------------- */
+
+.sidebar-footer a {
+  float: right;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.btn-secondary.disabled:hover {
+  color: #ffffff !important;
+}
+
+.btn-secondary.active,
+.btn-secondary:focus,
+.btn-secondary.disabled.active,
+.btn-secondary.disabled:focus {
+  color: #ffffff !important;
+}
+
+.calendar-events {
+  padding: 8px 10px;
+  border: 1px solid #ffffff;
+  cursor: move;
+}
+
+.calendar-events:hover {
+  border: 1px dashed rgba(120, 130, 140, 0.13);
+}
+
+.calendar-events i {
+  margin-right: 8px;
+}
+
+.fileinput .input-group-addon {
+  border: none;
+  border-bottom: 1px solid #d9d9d9;
+  background: #ffffff;
+  margin-bottom: 1px;
+}
+
+.input-form .btn {
+  padding: 10px 12px;
+}
+
+/*Documentation page*/
+
+.plugin-details {
+  display: none;
+}
+
+.plugin-details-active {
+  display: block;
+}
+
+/*-------------------*/
+
+/*Bootstrap 4 hack*/
+
+/*-------------------*/
+
+.bootstrap-touchspin .input-group-btn {
+  -webkit-box-align: normal;
+  -webkit-align-items: normal;
+  -ms-flex-align: normal;
+  align-items: normal;
+}
+
+.form-control-line .form-control.form-control-success:focus {
+  border-bottom: 1px solid #26c6da;
+}
+
+.form-control-line .form-control.form-control-warning:focus {
+  border-bottom: 1px solid #ffb22b;
+}
+
+.form-control-line .form-control.form-control-danger:focus {
+  border-bottom: 1px solid #fc4b6c;
+}
+
+.form-control-danger,
+.form-control-success,
+.form-control-warning {
+  padding-right: 2.25rem;
+  background-repeat: no-repeat;
+  background-position: center right .5625rem;
+  -webkit-background-size: 1.125rem 1.125rem;
+  background-size: 1.125rem 1.125rem;
+}
+
+.has-success .col-form-label,
+.has-success .custom-control,
+.has-success .form-check-label,
+.has-success .form-control-feedback,
+.has-success .form-control-label {
+  color: #26c6da;
+}
+
+.has-success .form-control-success {
+  background-image: url('assets/images/icon/success.svg');
+}
+
+.has-success .form-control {
+  border-color: #26c6da;
+}
+
+.has-warning .col-form-label,
+.has-warning .custom-control,
+.has-warning .form-check-label,
+.has-warning .form-control-feedback,
+.has-warning .form-control-label {
+  color: #ffb22b;
+}
+
+.has-warning .form-control-warning {
+  background-image: url('assets/images/icon/warning.svg');
+}
+
+.has-warning .form-control {
+  border-color: #ffb22b;
+}
+
+.has-danger .col-form-label,
+.has-danger .custom-control,
+.has-danger .form-check-label,
+.has-danger .form-control-feedback,
+.has-danger .form-control-label {
+  color: #fc4b6c;
+}
+
+.has-danger .form-control-danger {
+  background-image: url('assets/images/icon/danger.svg');
+}
+
+.has-danger .form-control {
+  border-color: #fc4b6c;
+}
+
+.input-group-addon [type="radio"]:not(:checked),
+.input-group-addon [type="radio"]:checked,
+.input-group-addon [type="checkbox"]:not(:checked),
+.input-group-addon [type="checkbox"]:checked {
+  position: initial;
+  opacity: 1;
+}
+
+/* ----------------------------------------------------------- */
+/* END material overrides that came from material horizontal */
+/* ----------------------------------------------------------- */
+
+
+/* ----------------------------------------------------------- */
+/* START custom styling of sweet alert */
+/* ----------------------------------------------------------- */
+.art-swal.full-screen {
+  opacity: .8;
+  background: #000;
+  width: 250px;
+
+  .swal2-header {
+    display: none;
+  }
+
+  .swal2-content {
+    color: white;
+    font-weight: bold;
+  }
+}
+
+/* ----------------------------------------------------------- */
+/* END custom styling of sweet alert */
+/* ----------------------------------------------------------- */
+
+/* ----------------------------------------------------------- */
+/* START override PrimeNG controls */
+/* ----------------------------------------------------------- */
+.ui-multiselect {
+  display: block;
+}
+
+p-dropdown.w-25 {
+  .ui-dropdown.ui-widget {
+    width: 25% !important;
+  }
+}
+
+p-dropdown.w-50 {
+  .ui-dropdown.ui-widget {
+    width: 50% !important;
+  }
+}
+
+p-dropdown.w-75 {
+  .ui-dropdown.ui-widget {
+    width: 75% !important;
+  }
+}
+
+p-dropdown.w-100 {
+  .ui-dropdown.ui-widget {
+    width: 100% !important;
+  }
+}
+
+p-dialog p-footer .dialog-footer {
+  padding: 5px;
+}
+/* ----------------------------------------------------------- */
+/* END custom styling of sweet alert */
+/* ----------------------------------------------------------- */
+
+/* ----------------------------------------------------------- */
+/* START remove spinners in input[type=number] */
+/* ----------------------------------------------------------- */
+
+/* For Firefox */
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+/* Webkit browsers like Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* ----------------------------------------------------------- */
+/* END remove spinners in input[type=number] */
+/* ----------------------------------------------------------- */
+
+/* ----------------------------------------------------------- */
+/* START swal2 sweetalerts override */
+/* ----------------------------------------------------------- */
+
+.swal2-container.swal2-shown {
+  z-index: 90000;
+}
+
+.swal-generic-http-error-response {
+  
+}
+
+/* ----------------------------------------------------------- */
+/* END swal2 sweetalerts override */
+/* ----------------------------------------------------------- */
+
+
+/* ----------------------------------------------------------- */
+/* START Page break */
+/* ----------------------------------------------------------- */
+.keep-together {
+  page-break-inside: avoid;
+}
+
+.break-before {
+  page-break-before: always;
+}
+
+.break-after {
+  page-break-after: always;
+}
+
+/* ----------------------------------------------------------- */
+/* END Page break */
+/* ----------------------------------------------------------- */
+
+
+/* ----------------------------------------------------------- */
+/* START Report CSS*/
+/* ----------------------------------------------------------- */
+.center-container{
+  margin: auto;
+  width: 1100px;
+  font-family: Calibri !important;
+  font-size: 16pt;
+}
+.center-container h1, 
+.center-container h2, 
+.center-container h3, 
+.center-container h4, 
+.center-container h5, 
+.center-container h6{
+  font-family: Calibri;
+}
+.cover-title{
+  font-size: 40pt;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+.justify{
+  text-align: justify;
+}
+.center{
+  text-align: center;
+}
+.font-bold{
+  font-weight: bold;
+}
+.rel-photo{
+  height: 430px;
+  width: 560px;
+  position: relative;
+}
+.fix-container{
+  min-height: 470px;
+  width: 1100px;
+  border-style: solid;
+  border-color: black;
+}
+.photo-container{
+  height: 470px;
+  width: 630px;
+  position: relative;
+}
+.description-container{
+  min-height: 470px;
+  width: 440px;
+  position: relative;
+}
+.photo-size{
+  height: 430px;
+  width: 560px;
+  position: absolute;
+}
+.actual-aspect-ratio{
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+}
+.description{
+  min-height: 340px;
+  width: 390px;
+  position: relative;
+  margin-bottom:30px !important;
+}
+.margin-auto{
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+.margin-center{
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+.title-font{
+  font-weight: bold;
+  font-size: 30pt;
+}
+.photo-type-font{
+  font-weight: bold !important;
+  font-size: 16pt !important;
+}
+.label-color{
+  color: rgb(68, 114, 196) !important;
+}
+.label-font{
+  font-weight: bold !important;
+  font-size: 18pt;
+}
+.col-lg-5 {
+  -ms-flex: 0 0 41.666667%;
+  flex: 0 0 41.666667%;
+  max-width: 41.666667%;
+}
+.col-lg-7 {
+  -ms-flex: 0 0 58.333333%;
+  flex: 0 0 58.333333%;
+  max-width: 58.333333%;
+}
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.m-t-10{
+  margin-top: 10px;
+}
+.wa-section {
+  page-break-inside: avoid !important;
+  margin-bottom: 45px;
+}
+.custom-table tr td:first-child{
+    font-weight: bold;
+}
+/* ----------------------------------------------------------- */
+/* END Report CSS*/
+/* ----------------------------------------------------------- */
+
+/* ----------------------------------------------------------- */
+/* START Map-It CSS*/
+/* ----------------------------------------------------------- */
+.map-info-window {
+  .streetview-container, .details-container {
+    float: left;
+  }
+
+  .streetview-container {
+    margin-right: 10px;
+    
+    img {
+
+    }
+  }
+
+  .details-container {
+    .insured-name {
+      display: block;
+    }
+  }
+
+}
+
+div[style*='CustomMarkerLabel'] {
+  margin-left: 130px;
+  font-family: Poppins, sans-serif !important;
+  font-weight: 500;
+}
+
+div[style*='CustomMarkerLabelGreen'] {
+  border: 1px solid #28a745;
+  background: #a9dbb4;
+}
+
+div[style*='CustomMarkerLabelYellow'] {
+  border: 1px solid #ffb22b;
+  background: #ffe0aa;
+}
+
+div[style*='CustomMarkerLabelRed'] {
+  border: 1px solid #fc4b6c;
+  background: #fdb7c4;
+}
+
+div[style*='CustomClustererImage'] {
+  background-image: url("assets/images/maps/clusterer-1.png") !important;
+}
+
+.gm-svpc {
+  display: none !important;
+}
+/* ----------------------------------------------------------- */
+/* END Map-It CSS*/
+/* ----------------------------------------------------------- */
+
+
+/* ----------------------------------------------------------- */
+/* START OrderManagement List CSS*/
+/* ----------------------------------------------------------- */
+
+.filter-buttons {
+  width: 115px;
+}
+
+/* ----------------------------------------------------------- */
+/* END OrderManagement List CSS*/
+/* ----------------------------------------------------------- */
+
+
+.sidebar-nav ul{
+  width: 230px;
+}
+
+.has-font-awesome-icon::-webkit-input-placeholder::first-letter {
+  font-family: FontAwesome !important;
+}
+
+.has-font-awesome-icon::-webkit-input-placeholder { 
+  font-family: FontAwesome, "Poppins", sans-serif;
+  font-weight: normal;
+  overflow: visible;
+  vertical-align: top;
+  display: inline-block !important;
+  padding-left: 5px;
+  padding-top: 2px;
+}
+  
+.has-font-awesome-icon::-moz-placeholder  { 
+  font-family: FontAwesome;
+  font-weight: normal;
+  overflow: visible;
+  vertical-align: top;
+  display: inline-block !important;
+  padding-left: 5px;
+  padding-top: 2px;
+}
+  
+.has-font-awesome-icon:-ms-input-placeholder  { 
+  font-family: FontAwesome;
+  font-weight: normal;
+  overflow: visible;
+  vertical-align: top;
+  display: inline-block !important;
+  padding-left: 5px;
+  padding-top: 2px;
+}
+
+.form-calendar .ui-calendar {
+  display: block;
+}
+
+.clear {
+  clear: both;
+}
+
+a[disabled], a[disabled]:hover {
+  pointer-events: none;
+}
+
+.ui-widget {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif !important;
+  font-size: .98em !important;
+}

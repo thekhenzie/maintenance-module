@@ -1,0 +1,9 @@
+<p-tabView [activeIndex]="tabIndex" (onChange)="tabChangedEvent($event)">
+  <ng-container *ngFor="let section of sections; let i = index">
+      <p-tabPanel [disabled]="section.disabled" [header]="section.header" [leftIcon]="section.leftIcon">
+        <ng-template pTemplate="content">
+          <dynamic-component-wrapper *ngIf="i == tabIndex || renderedIndexes.indexOf(i) > -1" [type]="section.component"></dynamic-component-wrapper>
+        </ng-template>
+      </p-tabPanel>
+  </ng-container>
+</p-tabView>

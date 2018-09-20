@@ -1,0 +1,28 @@
+<div class="row db-head">
+  <div class="col-lg-3">
+    <span class="inspec-title">Inspection Order Policy</span>
+  </div>
+  <div *ngIf="paramId" class="col-lg-6 offset-lg-3 nav">
+    <span class="col-lg-3 inspec-nav">
+      <a *ngIf="paramId" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/order-management/inspection-order', paramId, 'info']">
+        Inspection Info
+      </a>
+    </span>
+    <span class="col-lg-3 inspec-nav">
+      <a *ngIf="paramId" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/order-management/inspection-order', paramId, 'checklist']">
+        Inspection Checklist
+      </a>
+    </span>
+    <span class="col-lg-3 inspec-nav">
+      <a *ngIf="paramId" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/order-management/inspection-order', paramId, 'notes']">
+        Inspection Notes
+      </a>
+    </span>
+    <span class="col-lg-3 inspec-nav">
+        Inspection Order Log
+      <!-- <a *ngIf="paramId" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/order-management/inspection-order', paramId, 'inspection-order-timeline']">
+        Inspection Order Log
+      </a> -->
+    </span>
+  </div>
+</div>

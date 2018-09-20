@@ -1,0 +1,10 @@
+.standard-height{
+    height: auto;
+}
+.borderless-input{
+    border: none;
+    border-color: transparent;
+}
+.color-gray{
+    color: #67757c;
+}

@@ -1,0 +1,121 @@
+<div [innerHtml]="hideLinks"></div>
+
+<div id="insuredMitigationCard" class="card card-outline-info">
+  <div class="card-header">
+    <h4 *ngIf="!auth.isInsuredReport" class="m-b-0 text-white">Mitigation</h4>
+    <h4 *ngIf="auth.isInsuredReport" class="m-b-0 text-white">Report</h4>
+  </div>
+  <div class="standard-height card-body">
+    <div class="row">
+        <div class="m-t-10 m-b-10 col col-lg-12">
+          <div *ngIf="!auth.isInsuredReport" class="pull-right">
+            <button [disabled] = "checkIfButtonDisabled()" pButton type="button" (click)="setMitigationToPendingReview()" label="Complete Mitigation"></button>
+            <br>
+          </div>
+          <div class="m-l-100 m-r-100" *ngIf="auth.isInsuredReport">
+            <p>Hello {{insuredName}},</p>
+            <p>Thank you for trusting Rivington Partners with your property with the following details:</p>
+            <div>
+              <span class="font-weight-bold center-component">Policy Number:</span> {{inspectionOrder.policy.policyNumber}} <br>
+              <span class="font-weight-bold center-component">Insured Name:</span> {{insuredName}} <br>
+              <span class="font-weight-bold center-component">Inception Date:</span> {{inspectionOrder.policy.inceptionDate | date}} <br>
+              <span class="font-weight-bold center-component">Inspection Date:</span> {{inspectionOrder.inspectionDate | date}}<br><br>
+            </div>
+            <p>To access/download your Risk Management Report, please click the button below.</p>
+            <p>
+              You may view, save, and print your report using Adobe Reader. 
+              Click <a href="https://get.adobe.com/reader/" target="_blank">here</a>
+              to download the latest version of this software.
+            </p>
+            <p>For further inquiries please contact us through our email 
+              <a href="mailto:info@rivpartners.com">info@rivpartners.com</a> or visit us at 
+              <a href="https://rivpartners.com/" target="_blank">rivpartners.com</a>
+            </p>
+            <br>
+            <div class="col col-md-3 center-component">
+                <a href="/reporting/order-management/inspection-order/insured/{{currentIoId}}" class="btn btn-info btn-block" target="_blank" pTooltip="Please make sure that you allow popups on this site." tooltipPosition="bottom">
+                  <i class="fa fa-bar-chart-o"></i>
+                  View Report
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <p-tabView *ngIf="!auth.isInsuredReport">
+      <p-tabPanel header="Property">
+        <div class="row">
+          <div class="col col-lg-12">
+            <h3>Requirements</h3>
+            <app-photo-memo-crud 
+              getUrl="RetrieveNonWildfireAssessmentMitigationRequirements" 
+              postUrl="CreateNonWildfireAssessmentMitigationRequirement"
+              deleteUrl="DeleteNonWildfireAssessmentMitigationRequirement" 
+              headerLabel="Mitigation Requirement" addButtonLabel="Add Requirement"
+              [isChild]="false" getUrlChild="RetrieveNonWildfireAssessmentChildMitigationRequirements" 
+              postUrlChild="CreateNonWildfireAssessmentChildMitigationRequirement"
+              deleteUrlChild="DeleteNonWildfireAssessmentChildMitigationRequirement" 
+              headerLabelChild="Replies" 
+              addButtonLabelChild="Add Reply"
+              [isWildFireMitigation]="false"
+              [isInsured]="true"></app-photo-memo-crud>
+          </div>
+          <div class="col col-lg-12">
+              <h3>Recommendations</h3>
+            <app-photo-memo-crud 
+              getUrl="RetrieveNonWildfireAssessmentMitigationRecommendations" 
+              postUrl="CreateNonWildfireAssessmentMitigationRecommendation"
+              deleteUrl="DeleteNonWildfireAssessmentMitigationRecommendation"
+              headerLabel="Mitigation Recommendations"
+              addButtonLabel="Add Recommendations"
+              [isChild]="false"
+              getUrlChild="RetrieveNonWildfireAssessmentChildMitigationRecommendations" 
+              postUrlChild="CreateNonWildfireAssessmentChildMitigationRecommendation"
+              deleteUrlChild="DeleteNonWildfireAssessmentChildMitigationRecommendation"
+              headerLabelChild="Replies"
+              addButtonLabelChild="Add Reply"
+              [isWildFireMitigation]="false"
+              [isInsured]="true"></app-photo-memo-crud>
+          </div>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel *ngIf="isWildfireAssessment" header="Wildfire Assessment">
+        <div class="row">
+          <div class="col col-lg-12">
+              <h3>Requirements</h3>
+            <app-photo-memo-crud 
+              getUrl="RetrieveWildfireAssessmentMitigationRequirements" 
+              postUrl="CreateWildfireAssessmentMitigationRequirement"
+              deleteUrl="DeleteWildfireAssessmentMitigationRequirement" 
+              headerLabel="Mitigation Requirement" 
+              addButtonLabel="Add Requirement"
+              [isChild]="false" 
+              getUrlChild="RetrieveWildfireAssessmentChildMitigationRequirements" 
+              postUrlChild="CreateWildfireAssessmentChildMitigationRequirement"
+              deleteUrlChild="DeleteWildfireAssessmentChildMitigationRequirement" 
+              headerLabelChild="Replies" 
+              addButtonLabelChild="Add Reply"
+              [isWildFireMitigation]="true"
+              [isInsured]="true"></app-photo-memo-crud>
+          </div>
+          <div class="col col-lg-12">
+              <h3>Recommendations</h3>
+            <app-photo-memo-crud 
+              getUrl="RetrieveWildfireAssessmentMitigationRecommendations" 
+              postUrl="CreateWildfireAssessmentMitigationRecommendation"
+              deleteUrl="DeleteWildfireAssessmentMitigationRecommendation"
+              headerLabel="Mitigation Recommendations"
+              addButtonLabel="Add Recommendations"
+              [isChild]="false"
+              getUrlChild="RetrieveWildfireAssessmentChildMitigationRecommendations" 
+              postUrlChild="CreateWildfireAssessmentChildMitigationRecommendation"
+              deleteUrlChild="DeleteWildfireAssessmentChildMitigationRecommendation"
+              headerLabelChild="Replies"
+              addButtonLabelChild="Add Reply"
+              [isWildFireMitigation]="true"
+              [isInsured]="true"></app-photo-memo-crud>
+          </div>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>

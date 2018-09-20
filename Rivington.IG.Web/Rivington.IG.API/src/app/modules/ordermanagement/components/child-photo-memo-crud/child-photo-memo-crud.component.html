@@ -1,0 +1,85 @@
+<p-button data-toggle="modal" (click)="showAddEditModalForm(true)" icon="fa fa-fw fa-plus" label="{{addButtonLabel}}"></p-button>
+<br>
+
+<p-dialog [formGroup]="form" header="{{headerLabel}}" [(visible)]="showModalForm" [closable]="false"
+  [modal]="true" [responsive]="true" [width]="1000">
+  <div class="row">
+    <div class="col col-lg-7">
+      <div class="col-12 p-t-10">
+        <div *ngIf="file" class="img-container">
+          <img class="img-display" [src]="file | safeHtml" #uploadImage>
+        </div>
+      </div>
+      <div class="col-12 p-t-10">
+        <input [disabled]="editedBy != currentUser && isNew == false" type="file" name="file" (change)="getImageValue($event)" id="photo-upload" #inputImage/>
+      </div>
+    </div>
+    <div class="col col-lg-5">
+      <div class="col-12 p-t-10">
+        <label for="photoDescription">Memo</label>
+        <textarea [readonly]="editedBy != currentUser && isNew == false" class="form-control" rows="5" name="photoDescription" class="input-w-350" type="text" formControlName="description"></textarea>
+        <div *ngIf="hasError('description')" class="form-control-feedback text-red">Memo is required.</div>
+      </div>
+    </div>
+  </div>
+  <p-footer>
+    <button [disabled]="editedBy != currentUser && isNew == false" type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+    <button type="button" pButton icon="fa-close" (click)="showAddEditModalForm(false)" label="Close"></button>
+  </p-footer>
+</p-dialog>
+
+<p-table #pTable [value]="list" (onLazyLoad)="paginate($event)" [loading]="showTableLoading"
+  [totalRecords]="totalRecord">
+  <ng-template pTemplate="caption">
+    <div style="clear: both"></div>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+        <ng-container *ngSwitchDefault>
+          <th [pSortableColumn]="col.field" [pSortableColumnDisabled]="!col.sortable" [style.width]="col.renderStyleWidth()">
+            {{col.header}}
+            <ng-container *ngIf="col.sortable">
+              <p-sortIcon [field]="col.field"></p-sortIcon>
+            </ng-container>
+          </th>
+        </ng-container>
+      </ng-container>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns" let-i="rowIndex">
+    <tr [ngClass]="'bg-white'">
+      <td>
+        <p-lightbox type="content">
+          <a href="#">
+            <div class="list-thumbnail-container">
+              <img class="list-thumbnail" src="{{rowData.thumbnailPath}}">
+            </div>
+          </a>
+          <div class="image-preview-container">
+            <img class="image-preview" src="{{rowData.filePath}}">
+          </div>
+        </p-lightbox>
+      </td>
+      <td title="{{rowData.description}}">
+        <div class="block-with-text">{{rowData.description}}</div>
+      </td>
+      <td *ngIf="isChild">
+          <div class="block-with-text">{{rowData.displayName}}</div>
+      </td>
+      <td>
+        <button [disabled]="rowData['userName'] != currentUser" class="m-t-10 btn-block" pButton label="Delete" (click)="delete(rowData)" icon="fa fa-fw fa-trash"></button>
+        <button class="m-t-10 btn-block" pButton label="View/Edit" (click)="view(rowData)" icon="fa fa-fw fa-edit"></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td [attr.colspan]="noRecordColspan">
+        No records found.
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<br>
+<br>

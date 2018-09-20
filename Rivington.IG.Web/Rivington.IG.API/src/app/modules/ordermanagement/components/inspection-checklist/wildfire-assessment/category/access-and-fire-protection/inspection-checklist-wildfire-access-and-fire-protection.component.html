@@ -1,0 +1,107 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-outline-info">
+      <form action="#" [formGroup]="wildFireService.wildfireAssessmentForms.accessAndFireProtection" class="card-body">
+        <div class="form-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Are there address, driveway or other entrance concerns that could prevent timely emergency response?</label>
+                <p-checkbox (onChange)="setWildFireValue('timelyResponseConcern', 'timelyResponseConcern')" [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.accessAndFireProtection.controls['timelyResponseConcern']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Timely Response Concern Comments</label>
+                <textarea [readonly]="!wildFireService.isWildFireRequired || !wildFireService.timelyResponseConcern" class="form-control" formControlName="timelyResponseConcernComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Are the address numbers too small, hard to read or improperly marked?</label>
+                <p-checkbox (onChange)="setWildFireValue('addressHardToRead', 'addressHardtoRead')" [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.accessAndFireProtection.controls['addressHardtoRead']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Address Readability Comments</label>
+                <textarea [readonly]="!wildFireService.isWildFireRequired || !wildFireService.addressHardToRead" class="form-control" formControlName="addressReadabilityComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Bridge Concern?</label>
+                <p-checkbox [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="ml-3" binary="true" [formControl]="wildFireService.wildfireAssessmentForms.accessAndFireProtection.controls['bridgeConcern']"></p-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Bridge Concern Comments</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="bridgeConcernComment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Responding Fire Department</label>
+                <input [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" type="text" pInputText class="form-control" formControlName="respondingFireDepartment" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Fire Department Staffing</label>
+                <p-dropdown [disabled]="ioService.isFutureDate || !wildFireService.isWildFireRequired" [options]="fireDepartmentStaffing" formControlName="fireDepartmentStaffingId" placeholder="Select Fire Department Staffing"
+                  class="w-100"></p-dropdown>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Fire Department Distance to Home</label>
+                <input [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" type="text" pInputText class="form-control" formControlName="fireDepartmentDistancetoHome" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Fire Department Travel Time to Home (Minutes)</label>
+                <input [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" type="text" class="form-control int-only" maxlength="3" formControlName="fireDepartmentTravelTimetoHome" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Nearest Fire Hydrant</label>
+                <input [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" type="text" pInputText class="form-control" formControlName="nearestFireHydrant" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Alternate Water Source If No Hydrant</label>
+                <textarea [readonly]="ioService.isFutureDate || !wildFireService.isWildFireRequired" class="form-control" formControlName="alternateWaterSourceIfNoHydrant"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,178 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <form action="#" [formGroup]="ioChecklistPropertyService.propertyForms.highValueKitchen" class="card-body">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Kitchen Cabinets</label>
+                                <p-dropdown [options]="kitchenCabinets" 
+                                    formControlName="kitchenCabinetId" 
+                                    placeholder="Select Kitchen Cabinets"
+                                    class="w-100"
+                                    [disabled]="ioService.isFutureDate || !ioChecklistPropertyService.isHighValue" 
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Kitchen Countertops</label>
+                                <p-dropdown [options]="kitchenCountertops" 
+                                    formControlName="kitchenCountertopId" 
+                                    placeholder="Select Kitchen Countertops"
+                                    class="w-100"
+                                    [disabled]="ioService.isFutureDate || !ioChecklistPropertyService.isHighValue" 
+                                    [showClear]="true"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Kitchen Backsplash Material</label>
+                                <input [readonly]="ioService.isFutureDate || !ioChecklistPropertyService.isHighValue" type="text" class="form-control" formControlName="kitchenBacksplashMaterial">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Kitchen Island?</label>
+                                <p-checkbox (onChange)="setPropertyFieldValue('kitchenIsland', 'kitchenIsland')" [disabled]="ioService.isFutureDate || !ioChecklistPropertyService.isHighValue" class="ml-3" binary="true" [formControl]="ioChecklistPropertyService.propertyForms.highValueKitchen.controls['kitchenIsland']"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Island Cabinet Materials</label>
+                                <input [readonly]="ioService.isFutureDate || !ioChecklistPropertyService.isHighValue || !ioChecklistPropertyService.kitchenIsland" type="text" class="form-control" formControlName="islandCabinetMaterial">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Island Countertop Materials</label>
+                                <input [readonly]="ioService.isFutureDate || !ioChecklistPropertyService.isHighValue || !ioChecklistPropertyService.kitchenIsland" type="text" class="form-control" formControlName="islandCountertopMaterial">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <p-table #applianceTable [value]="appliance.table.data" [totalRecords]="appliance.table.totalRecord">
+                                    <ng-template pTemplate="caption">
+                                        <div class="text-left">
+                                            <!-- <h5>Appliances</h5> -->
+                                            <p-button [disabled]="ioService.isFutureDate || !ioChecklistPropertyService.isHighValue" icon="fa fa-fw fa-plus" (onClick)="addApplianceClickEvent()" label="Add Appliance"></p-button>
+                                        </div>
+                                    </ng-template>
+                                    <ng-template pTemplate="header" let-columns>
+                                        <tr>
+                                            <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+                                                <ng-container *ngSwitchDefault>
+                                                    <th *ngIf="col.visible" [pSortableColumn]="col.field" [pSortableColumnDisabled]="!col.sortable" [style.width]="col.renderStyleWidth()">
+                                                        {{col.header}}
+                                                        <ng-container *ngIf="col.sortable">
+                                                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                                                        </ng-container>
+                                                    </th>
+                                                </ng-container>
+                                            </ng-container>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-rowData let-columns="columns" let-i="rowIndex">
+                                        <tr>
+                                            <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+                                                <ng-container *ngSwitchCase="'item'">
+                                                    <td *ngIf="col.visible">
+                                                        {{ i + 1}}
+                                                    </td>
+                                                </ng-container>
+                                                <ng-container *ngSwitchCase="'applianceType'">
+                                                    <td *ngIf="col.visible">
+                                                        {{rowData[col.field].name}}
+                                                    </td>
+                                                </ng-container>
+                                                <ng-container *ngSwitchCase="'applianceBrand'">
+                                                    <td *ngIf="col.visible">
+                                                        {{rowData[col.field].name}}
+                                                    </td>
+                                                </ng-container>
+                                                <ng-container *ngSwitchDefault>
+                                                    <td *ngIf="col.visible">
+                                                        {{rowData[col.field]}}
+                                                    </td>
+                                                </ng-container>
+                                                <ng-container *ngSwitchCase="'action'">
+                                                    <td *ngIf="col.visible">
+                                                        <button pButton [disabled]="ioService.isFutureDate || !ioChecklistPropertyService.isHighValue"  icon="fa fa-fw fa-edit" label="Edit" (click)="editApplianceClickEvent(i, rowData)"></button>
+                                                        <button pButton [disabled]="ioService.isFutureDate || !ioChecklistPropertyService.isHighValue"  icon="fa fa-fw fa-trash" label="Delete" (click)="deleteApplianceClickEvent(i, rowData)"></button>
+                                                    </td>
+                                                </ng-container>
+                                            </ng-container>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="emptymessage">
+                                        <tr>
+                                            <td [attr.colspan]="appliance.table.noRecordColspan">
+                                                No records found.
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<p-dialog header="{{ appliance.isAddAppliance ? 'Add' : 'Edit' }} Appliance" [(visible)]="appliance.showApplianceFormModal" [responsive]="true" showEffect="fade" [modal]="true"
+    [closable]="false" #applianceDialog (onShow)="onDialogShowEvent()">
+    <form [formGroup]="appliance.form" style="width: 400px">
+        <p-panel>
+            <div>Appliance Type</div>
+            <div class="form-group m-b-40">
+                <p-dropdown [options]="applianceTypes" 
+                    formControlName="applianceTypeId" 
+                    placeholder="Select Appliance Type"
+                    class="w-100"
+                    [showClear]="true"></p-dropdown>
+            </div>
+            <div>Appliance Brand</div>
+            <div class="form-group m-b-40">
+                <p-dropdown [options]="applianceBrands" 
+                    formControlName="applianceBrandId"
+                    placeholder="Select Appliance Brand"
+                    class="w-100"
+                    [showClear]="true"></p-dropdown>
+            </div>
+            <div>Number of Appliances</div>
+            <div class="form-group m-b-40">
+                <input class="form-control int-only" maxlength="4" formControlName="numberofAppliance">
+            </div>
+            <p-footer>
+                <div class="dialog-footer text-right">
+                    <button [disabled]="appliance.form.invalid" (click)="saveAppliance()" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
+                        <span class="fa fa-fw fa-save ui-clickable ui-button-icon-left"></span>
+                        <span class="ui-button-text ui-clickable">Submit</span>
+                    </button>
+                    <button (click)="cancelApplianceClickEvent()" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
+                        <span class="fa fa-fw fa-times ui-clickable ui-button-icon-left"></span>
+                        <span class="ui-button-text ui-clickable">Close</span>
+                    </button>
+                </div>
+            </p-footer>
+        </p-panel>
+    </form>
+</p-dialog>
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+<p-dialog header="Notification" [(visible)]="doShowErrorDialog">
+    {{dialogErrorMessage}}
+</p-dialog>
