@@ -16,7 +16,6 @@ import { MaintenanceDialogComponent } from './components/maintenance-dialog/main
     CommonModule,
     MaintenancemanagementRoutingModule,
 
-    ConfirmationService,
     //primeng modules
     PaginatorModule,
     SpinnerModule,
