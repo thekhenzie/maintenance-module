@@ -28,7 +28,7 @@ namespace Rivington.IG.API.Controllers.Maintenance
 		}
 
 		[HttpGet]
-		[Route("/api/generic/{type}")]
+		[Route("/api/RetrieveGeneric/{type}")]
 		public IActionResult GetGenericList(string type)
 		{
 			if (string.IsNullOrEmpty(type)) return BadRequest();
@@ -52,7 +52,7 @@ namespace Rivington.IG.API.Controllers.Maintenance
 		}
 
 		[HttpGet]
-		[Route("/api/generic/{type}/{id}")]
+		[Route("/api/RetrieveGenericById/{type}/{id}")]
 		public IActionResult GetGenericById(string type, string id)
 		{
 			if (string.IsNullOrEmpty(type)) return BadRequest();
@@ -76,7 +76,7 @@ namespace Rivington.IG.API.Controllers.Maintenance
 		}
 
 		[HttpDelete]
-		[Route("/api/deleteGeneric/{type}/{id}")]
+		[Route("/api/DeleteGeneric/{type}/{id}")]
 		public IActionResult DeleteGenericById(string type, string id)
 		{
 			if (type == null) return BadRequest();
@@ -102,7 +102,7 @@ namespace Rivington.IG.API.Controllers.Maintenance
 		}
 
 		[HttpPost]
-		[Route("/api/createGeneric/{type}")]
+		[Route("/api/CreateGeneric/{type}")]
 		public IActionResult CreateGenericEnumeration(string type, [FromBody] GenericEnumerationType data)
 		{
 			try
@@ -130,7 +130,7 @@ namespace Rivington.IG.API.Controllers.Maintenance
 		}
 
 		[HttpPut]
-		[Route("/api/updateGeneric/{type}/{id}")]
+		[Route("/api/UpdateGeneric/{type}/{id}")]
 		public IActionResult UpdateGenericEnumeration(string type, string id, [FromBody] GenericEnumerationType data)
 		{
 			try
