@@ -130,7 +130,7 @@ namespace Rivington.IG.API.Controllers.Maintenance
 		}
 
 		[HttpPut]
-		[Route("api/updateGeneric/{type}/{id}")]
+		[Route("/api/updateGeneric/{type}/{id}")]
 		public IActionResult UpdateGenericEnumeration(string type, string id, [FromBody] GenericEnumerationType data)
 		{
 			try
