@@ -130,14 +130,13 @@ namespace Rivington.IG.API.Controllers.Maintenance
 		}
 
 		[HttpPut]
-		[Route("/api/UpdateGeneric/{type}/{id}")]
-		public IActionResult UpdateGenericEnumeration(string type, string id, [FromBody] GenericEnumerationType data)
+		[Route("/api/UpdateGeneric/{type}")]
+		public IActionResult UpdateGenericEnumeration(string type, [FromBody] GenericEnumerationType data)
 		{
 			try
 			{
 				if (data == null) return BadRequest();
 				if (type == null) return BadRequest();
-				if (id == null) return BadRequest();
 				var assembly = typeof(FramingType).Assembly;
 				var genericType = assembly.GetType($"{assembly.GetName().Name}.{type}");
 				if (genericType == null) throw new Exception();
@@ -147,7 +146,7 @@ namespace Rivington.IG.API.Controllers.Maintenance
 
 				string sObj = JsonConvert.SerializeObject(data);
 				var obj = JsonConvert.DeserializeObject(sObj, genericType);
-				var genericValue = generic.Invoke(_enumerationRepository, new object[] { id, obj });
+				var genericValue = generic.Invoke(_enumerationRepository, new object[] { obj });
 
 				return Ok(genericValue);
 			}
