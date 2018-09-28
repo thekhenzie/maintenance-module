@@ -1,6 +1,12 @@
 <div class="container">
 
   <p-panel>
+
+    <div class="ui-g">
+        <p-dropdown [options]="classesList" [(ngModel)]="selectedClass" placeholder="Select a class" (onChange)=paginate($event)
+        [disabled]="isLoadingClass"></p-dropdown>
+    </div>
+    <br>
     <div class="searchHeader">
       <p-button icon="fa fa-fw fa-plus" (onClick)="newComment()" label="Add Note"></p-button>
     </div>

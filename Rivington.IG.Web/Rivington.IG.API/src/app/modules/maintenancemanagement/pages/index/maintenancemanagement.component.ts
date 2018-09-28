@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Table } from 'primeng/components/table/table';
+import { SelectItem } from 'primeng/primeng';
 import { Column } from '../../../shared/components/pArtTable/models/column';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { PrimeTableUtils } from '../../../shared/PrimeTableUtils';
@@ -27,6 +28,9 @@ export class MaintenancemanagementComponent implements OnInit {
   nameSection: string;
   isActiveSection: boolean;
   indexOfNote: number;
+  classesList: SelectItem[];
+  selectedClass: SelectItem;
+  isLoadingClass: boolean;
   genericEnumerationList: GenericEnumeration[];
   selectedGenericEnumeration: GenericEnumeration;
   paginationResult: IPaginationResult<GenericEnumeration>[];
@@ -37,8 +41,6 @@ export class MaintenancemanagementComponent implements OnInit {
     private route: ActivatedRoute,
     private conf: ConfirmationService,
     private fb: FormBuilder) {
-
-    debugger;
   }
 
   @ViewChild('pTable') public pTable: Table;
@@ -50,17 +52,30 @@ export class MaintenancemanagementComponent implements OnInit {
       'genIsActive': new FormControl('', Validators.required)
     });
 
-
     this.pTable.columns = [
       new Column({ field: "id", header: "ID" }),
       new Column({ field: "name", header: "Name" }),
-      new Column({ field: "isActive", header: "IsActive"}),
+      new Column({ field: "isActive", header: "IsActive" }),
       // new Column({ field: "sortOrder", header: "Sort Order" }),
       new Column({ field: "action", header: "", sortable: false, width: '200' })
     ];
 
     this.noRecordColspan = this.pTable.columns.filter(c => c.visible).length;
     PrimeTableUtils.setDefaults(this.pTable);
+
+    this.isLoadingClass = true;
+    this.genericService.getAllGeneric()
+      .subscribe(result => {
+        this.classesList = result;
+      },
+        err => {
+          console.log('Get all generic error');
+        },
+        ()=>{
+          this.isLoadingClass = false;
+        });
+
+    // this.selectedType = ;
   }
 
   newComment(): void {
@@ -79,36 +94,28 @@ export class MaintenancemanagementComponent implements OnInit {
   paginate(event) {
     setTimeout(() => {
       this.showTableLoading = true;
-      // this.globalService.postGenericList<IPaginationResult<Maintenance>>(
-      //   "InspectionNotesList",
-      //   event,
-      //   this.searchFilterFinal,
-      //   this.pTable.columns.map(c => c.field),
-      //   null,
-      //   {
-      //     inspectionOrderId: this.route.snapshot.params['id']
-      //   }
-      // )
+      debugger;
 
-      this.genericService.getGenericList<GenericEnumeration>('OrderManagement.FramingType')
-        .subscribe(paginationResult => {
-          // this.paginationResult = paginationResult;
-          this.genericEnumerationList = paginationResult;
-
-          // this.maintenanceList = this.paginationResult;
-          // for (var res of this.paginationResult) {
-          //   this.maintenanceList.push(res);
-          // }
-          this.totalRecord = this.genericEnumerationList.length;
-
-        },
-          err => {
-            console.log('error')
+      if (this.selectedClass) {
+        this.genericService.getGenericList<GenericEnumeration>(this.selectedClass.toString())
+          .subscribe(paginationResult => {
+            this.genericEnumerationList = paginationResult;
+            this.totalRecord = this.genericEnumerationList.length;
           },
-          () => {
-            this.showTableLoading = false;
-            this.firstRowOffset = event.first;
-          });
+            err => {
+              console.log('error')
+            },
+            () => {
+              this.showTableLoading = false;
+              this.firstRowOffset = event.first;
+            });
+      }
+      else {
+        this.genericEnumerationList = [];
+        this.showTableLoading = false;
+        this.firstRowOffset = event.first;
+      }
+
 
     });
   }
