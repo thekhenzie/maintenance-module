@@ -22,7 +22,7 @@ export class InspectionNotesConfirmationComponent implements OnInit {
   username: string;
   show: boolean;
   @Input() inspectorToUW: boolean;
-  @Input() pendUWR:boolean;
+  @Input() pendUWR: boolean;
   @Input() outstandingQC: boolean;
   @Input() pendingWriteUp: boolean;
   @Input() isEditable: boolean;
@@ -36,7 +36,7 @@ export class InspectionNotesConfirmationComponent implements OnInit {
   @Output() closeModal: EventEmitter<boolean>;
 
   @Output() resetTable: EventEmitter<boolean>;
-  
+
   @Input() selectedInspectionOrderNote: InspectionOrderNotes;
 
   constructor(public inspectionOrderNotesService: InspectionOrderNotesService,
@@ -46,18 +46,18 @@ export class InspectionNotesConfirmationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public ioService: InspectionOrderService,
-    private userActivityService: UserActivityLogService) { 
-      this.closeModal = new EventEmitter<boolean>();
-      this.resetTable = new EventEmitter<boolean>();
-    }
+    private userActivityService: UserActivityLogService) {
+    this.closeModal = new EventEmitter<boolean>();
+    this.resetTable = new EventEmitter<boolean>();
+  }
 
   ngOnInit() {
     this.username = this.localService.getUserName();
-    
-        this.userform = this.fb.group({
-          'comment': new FormControl('', Validators.required),
-          'subject': new FormControl('', Validators.required)
-        });
+
+    this.userform = this.fb.group({
+      'comment': new FormControl('', Validators.required),
+      'subject': new FormControl('', Validators.required)
+    });
   }
 
   addComment() {
@@ -69,18 +69,18 @@ export class InspectionNotesConfirmationComponent implements OnInit {
 
     if (this.isNewNote) {
       this.inspectionOrderNotesService.postInspectionOrderNote(this.selectedInspectionOrderNote).then(emp => {
-        if(this.pendingWriteUp) {
+        if (this.pendingWriteUp) {
           this.setStatusToPendingQC();
         }
-        else if(this.outstandingQC) {
+        else if (this.outstandingQC) {
           this.setStatusToOutstandingQC();
         }
-        else if(this.pendUWR) {
+        else if (this.pendUWR) {
           this.setStatusToUWIssues();
         }
-        else if(this.inspectorToUW) {
+        else if (this.inspectorToUW) {
           this.setStatusToPendingUnderWriterReview();
-        } 
+        }
         else {
           this.cancelCom();
           Utils.showSuccess("Your Note has been added!");
@@ -88,18 +88,18 @@ export class InspectionNotesConfirmationComponent implements OnInit {
         }
       });
 
-      this.userActivityService.sendEvent( CategoryConstants.Create, 'order-management/notes', CategoryConstants.CreatedNotes);
-      
+      this.userActivityService.sendEvent(CategoryConstants.Create, 'order-management/notes', CategoryConstants.CreatedNotes);
+
     }
     else {
       this.selectedInspectionOrderNote.modifiedBy = null;
       this.inspectionOrderNotesService.putInspectionOrderNote(this.selectedInspectionOrderNote).then(emp => {
-      this.cancelCom();
-      this.userform.markAsPristine();
-      Utils.showSuccess("Your Note has been edited!");
-      this.resetTable.emit(true);
+        this.cancelCom();
+        this.userform.markAsPristine();
+        Utils.showSuccess("Your Note has been edited!");
+        this.resetTable.emit(true);
 
-      this.userActivityService.sendEvent( CategoryConstants.Update, 'order-management/notes', CategoryConstants.UpdatedNotes);
+        this.userActivityService.sendEvent(CategoryConstants.Update, 'order-management/notes', CategoryConstants.UpdatedNotes);
       });
     }
     this.commentSection = "";
@@ -122,7 +122,7 @@ export class InspectionNotesConfirmationComponent implements OnInit {
           accept: () => {
             this.cancelCom();
 
-            this.userActivityService.sendEvent( CategoryConstants.Cancel, 'order-management/notes', CategoryConstants.CancelledCreatingNotes);
+            this.userActivityService.sendEvent(CategoryConstants.Cancel, 'order-management/notes', CategoryConstants.CancelledCreatingNotes);
           }
         });
       }
@@ -164,19 +164,19 @@ export class InspectionNotesConfirmationComponent implements OnInit {
       Utils.showSuccess("Report has been submitted for QC!");
       this.router.navigate(['order-management']);
     },
-    err => {
-      Utils.showGenericHttpErrorResponse(err);
-    });
+      err => {
+        Utils.showGenericHttpErrorResponse(err);
+      });
   }
 
   setStatusToOutstandingQC() {
     this.ioService.setIOStatusAndSendEmail(this.route.snapshot.params['id'], "PQCI", "SetStatusPendingQCIAndSendEmail").subscribe(res => {
-        this.selectedInspectionOrderNote = null;
-        this.display = false;
-        this.userform.markAsPristine();
-        Utils.showSuccess("Report has been sent back to the inspector!");
-        this.router.navigate(['order-management']);
-      },
+      this.selectedInspectionOrderNote = null;
+      this.display = false;
+      this.userform.markAsPristine();
+      Utils.showSuccess("Report has been sent back to the inspector!");
+      this.router.navigate(['order-management']);
+    },
       err => {
         Utils.showGenericHttpErrorResponse(err);
       });
@@ -184,12 +184,12 @@ export class InspectionNotesConfirmationComponent implements OnInit {
 
   setStatusToUWIssues() {
     this.ioService.setIOStatusAndSendEmail(this.route.snapshot.params['id'], "UWI", "SetStatusUWIssuesAndSendEmail").subscribe(res => {
-        this.selectedInspectionOrderNote = null;
-        this.display = false;
-        this.userform.markAsPristine();
-        Utils.showSuccess("Report has been sent back to the inspector!");
-        this.router.navigate(['order-management']);
-      },
+      this.selectedInspectionOrderNote = null;
+      this.display = false;
+      this.userform.markAsPristine();
+      Utils.showSuccess("Report has been sent back to the inspector!");
+      this.router.navigate(['order-management']);
+    },
       err => {
         Utils.showGenericHttpErrorResponse(err);
       });
