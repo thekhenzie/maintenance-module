@@ -12,6 +12,7 @@ public abstract class Enumeration : IComparable
     public virtual string Id { get; set; }
     public virtual string Name { get; set; }
     public virtual int SortOrder { get; set; }
+    public virtual bool IsActive { get; set; }
 
     protected Enumeration()
     {
@@ -22,6 +23,7 @@ public abstract class Enumeration : IComparable
         Id = id;
         Name = name;
         SortOrder = 1;
+        IsActive = true;
     }
 
     protected Enumeration(string id, string name, int sortOrder)
