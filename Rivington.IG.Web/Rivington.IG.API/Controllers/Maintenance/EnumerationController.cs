@@ -116,7 +116,7 @@ namespace Rivington.IG.API.Controllers.Maintenance
 
 				MethodInfo method = typeof(IEnumerationRepository).GetMethod(nameof(IEnumerationRepository.Create));
 				MethodInfo generic = method.MakeGenericMethod(genericType);
-				
+
 				string sObj = JsonConvert.SerializeObject(data);
 				var obj = JsonConvert.DeserializeObject(sObj, genericType);
 				var genericValue = generic.Invoke(_enumerationRepository, new object[] { obj });
@@ -150,10 +150,48 @@ namespace Rivington.IG.API.Controllers.Maintenance
 
 				return Ok(genericValue);
 			}
-			catch(Exception e)
+			catch (Exception e)
 			{
 				return BadRequest();
 			}
 		}
+
+		[HttpGet]
+		[Route("/api/GetInheritedClass")]
+		public IActionResult GetInheritedclass()
+		{
+			IEnumerable<SelectItem> classes = GetEnumerableOfType<Enumeration>();
+			return Ok(classes);
+		}
+
+		public static IEnumerable<SelectItem> GetEnumerableOfType<T>() where T : class
+		{
+			List<SelectItem> objects = new List<SelectItem>();
+			SelectItem selectItem;
+			foreach (Type type in
+				Assembly.GetAssembly(typeof(T)).GetTypes()
+				.Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(T))))
+			{
+				selectItem = new SelectItem()
+				{
+					label = type.ToString().Split('.').Last(),
+					value = type.ToString().Substring(27) //after "Models."
+				};
+
+				if (selectItem.label != "GenericEnumerationType") objects.Add(selectItem);
+			}
+			//{ Rivington.IG.Domain.Models.GenericEnumerationType}
+			return objects.OrderBy(s => s.label);
+		}
+
+
 	}
+
+	public class SelectItem
+	{
+		public string label { get; set; }
+		public string value { get; set; }
+	}
+
+
 }
