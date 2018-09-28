@@ -211,8 +211,8 @@ export class CommonService {
             .then(data => { return data as T; })
         //.catch(this.handleError);
     }
-    updateGeneric<T>(type: string, id, objEntity: T) {
-        return this.http.put(`${Constants.ApiUrl}/UpdateGeneric/${type}/${id}`, objEntity)
+    updateGeneric<T>(type: string, objEntity: T) {
+        return this.http.put(`${Constants.ApiUrl}/UpdateGeneric/${type}`, objEntity)
             .toPromise()
             .then(() => objEntity)
             .catch(this.handleError);
