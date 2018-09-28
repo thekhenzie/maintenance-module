@@ -1,7 +1,30 @@
-<p-dialog header="" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" [closable]="true">
-  <form>
+<p-dialog header="" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" [closable]="false">
+  <form [formGroup]="genericForm">
     <p-panel>
+      <div>ID</div>
+      <div class="form-group m-b-40">
+        <input [(ngModel)]="idSection" type="text" [readonly]="viewOnly" class="form-control" required id="genId"
+          formControlName="genId" placeholder="Add ID here" autocomplete="nope" role="presentation">
+        <span class="bar"></span>
+      </div>
       <div>Name</div>
+      <div class="form-group m-b-40">
+        <textarea [(ngModel)]="nameSection" [readonly]="viewOnly" [rows]="5" [cols]="50" class="form-control" required
+          id="genName" formControlName="genName" placeholder="Add Name here"></textarea>
+        <span class="bar"></span>
+      </div>
+      <div>Is Active?</div>
+      <div class="form-group m-b-40">
+          <!-- <textarea [(ngModel)]="isActiveSection" [readonly]="viewOnly" [rows]="5" [cols]="50" class="form-control" required
+            id="genIsActive" formControlName="genIsActive" placeholder="Add Name here"></textarea> -->
+            <p-checkbox [(ngModel)]="isActiveSection" [disabled]="viewOnly" binary="true" id="genIsActive" formControlName="genIsActive"></p-checkbox> {{isActiveSection}}
+          <span class="bar"></span>
+        </div>
+      <div class="note-footer">
+        <button pButton type="button" icon="fa-share-square" label="Submit" *ngIf="viewOnly==false" [disabled]="genericForm.invalid"
+          (click)="addComment()"></button>
+        <button pButton type="button" icon="fa-times" label="Close" (click)="cancelComment()"></button>
+      </div>
     </p-panel>
   </form>
 </p-dialog>

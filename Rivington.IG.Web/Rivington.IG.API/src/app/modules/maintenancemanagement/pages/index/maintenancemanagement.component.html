@@ -6,33 +6,31 @@
     </div>
 
     <div class="ui-g">
-      <p-table #pTable [loading]="showTableLoading" [value]=paginationResult (onLazyLoad)=paginate($event)
+      <p-table #pTable [loading]="showTableLoading" [value]=genericEnumerationList (onLazyLoad)=paginate($event)
         [totalRecords]="totalRecord">
         <ng-template pTemplate="caption">
           <div style="clear: both"></div>
         </ng-template>
         <ng-template pTemplate="header" let-columns>
           <tr>
-            <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
-              <ng-container *ngSwitchDefault>
-                <th [pSortableColumn]="col.field" [pSortableColumnDisabled]="!col.sortable" [style.width]="col.renderStyleWidth()">
-                  {{col.header}}
-                  <ng-container *ngIf="col.sortable">
-                    <p-sortIcon [field]="col.field"></p-sortIcon>
-                  </ng-container>
-                </th>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field" [pSortableColumnDisabled]="!col.sortable"
+              [style.width]="col.renderStyleWidth()">
+              {{col.header}}
+              <ng-container *ngIf="col.sortable">
+                <p-sortIcon [field]="col.field"></p-sortIcon>
               </ng-container>
-            </ng-container>
+            </th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-rowData let-columns="columns" let-i="rowIndex">
           <tr>
             <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
-              <ng-container *ngSwitchCase="'dateModified'">
+              <!-- <ng-container *ngSwitchCase="'isActive'">
                 <td *ngIf="col.visible">
+                  <p-checkbox name="" value="rowData[col.field]" binary="true"></p-checkbox>
                   {{rowData[col.field] | date: utilityService.appSettings.defaultDateFormat }}
                 </td>
-              </ng-container>
+              </ng-container> -->
               <ng-container *ngSwitchDefault>
                 <td *ngIf="col.visible">
                   {{rowData[col.field]}}
@@ -66,4 +64,6 @@
   </p-panel>
 </div>
 
-<app-maintenance-dialog [display]="display" (closeModal)='getCloseModal($event)'></app-maintenance-dialog>
+<app-maintenance-dialog [display]="display" [viewOnly]="viewOnly" (closeModal)='getCloseModal($event)'
+  [isNewEnumeration]="isNewEnumeration" [selectedGenericEnumeration]="selectedGenericEnumeration" [idSection]="idSection"
+  [nameSection]="nameSection" [isActiveSection]="isActiveSection" [indexOfNote]="indexOfNote" (resetTable)="resetTable($event)"></app-maintenance-dialog>
