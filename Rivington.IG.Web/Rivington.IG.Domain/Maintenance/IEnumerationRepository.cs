@@ -15,7 +15,7 @@ namespace Rivington.IG.Domain
         TEntity RetrieveById<TEntity>(string id) where TEntity : class;
 
         TEntity Create<TEntity>(TEntity ent) where TEntity : class;
-        TEntity Update<TEntity>(string id, TEntity modifiedEnt) where TEntity : class;
+        TEntity Update<TEntity>(TEntity modifiedEnt) where TEntity : class;
         void Delete<TEntity>(string id) where TEntity : class;
 
         IList<TEntity> RetrievePage<TEntity, TKey>(Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, TKey>> sort, int skip, int top) where TEntity : class where TKey : struct;

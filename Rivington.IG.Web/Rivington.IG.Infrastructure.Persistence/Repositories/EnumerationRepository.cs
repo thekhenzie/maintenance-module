@@ -36,15 +36,8 @@ namespace Rivington.IG.Infrastructure.Persistence.Repositories
             return ent;
         }
 
-        public TEntity Update<TEntity>(string id, TEntity modifiedEnt) where TEntity : class
+        public TEntity Update<TEntity>(TEntity modifiedEnt) where TEntity : class
         {
-
-            //TEntity existing = RetrieveById<TEntity>(id);
-            //var oldEntity = this.Retrieve(id);
-            //context.Entry(entity).State = EntityState.Modified;
-            //context.Update(entity);
-
-            //context.Entry(existing).CurrentValues.SetValues(modifiedEnt);
             context.Update(modifiedEnt);
             context.SaveChanges();
             return modifiedEnt;
