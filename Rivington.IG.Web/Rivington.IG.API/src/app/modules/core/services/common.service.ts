@@ -223,6 +223,11 @@ export class CommonService {
         .then(()=> null)
         .catch(this.handleError);
     }
+    getAllGeneric(): Observable<SelectItem[]>{
+        return this.http.get(`${Constants.ApiUrl}/GetInheritedClass`)
+        .map(data => data as SelectItem[])
+        .catch(this.handleObservableHttpError);
+    }
 
     getSelectItemList(type: string): Observable<SelectItem[]> {
         return this.http.get<any[]>(`${Constants.ApiUrl}/keyvalue/generic/${type}`, {})
