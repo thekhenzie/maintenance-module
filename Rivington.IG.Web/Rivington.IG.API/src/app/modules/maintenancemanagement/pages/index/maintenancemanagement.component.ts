@@ -31,6 +31,7 @@ export class MaintenancemanagementComponent implements OnInit {
   classesList: SelectItem[];
   selectedClass: SelectItem;
   isLoadingClass: boolean;
+  cols: any[];
   genericEnumerationList: GenericEnumeration[];
   selectedGenericEnumeration: GenericEnumeration;
   paginationResult: IPaginationResult<GenericEnumeration>[];
@@ -52,15 +53,22 @@ export class MaintenancemanagementComponent implements OnInit {
       'genIsActive': new FormControl('', Validators.required)
     });
 
-    this.pTable.columns = [
-      new Column({ field: "id", header: "ID" }),
-      new Column({ field: "name", header: "Name" }),
-      new Column({ field: "isActive", header: "IsActive" }),
-      // new Column({ field: "sortOrder", header: "Sort Order" }),
-      new Column({ field: "action", header: "", sortable: false, width: '200' })
-    ];
+    // this.pTable.columns = [
+    //   new Column({ field: "id", header: "ID" }),
+    //   new Column({ field: "name", header: "Name" }),
+    //   new Column({ field: "isActive", header: "IsActive" }),
+    //   // new Column({ field: "sortOrder", header: "Sort Order" }),
+    //   new Column({ field: "action", header: "", sortable: false, width: '200' })
+    // ];
 
-    this.noRecordColspan = this.pTable.columns.filter(c => c.visible).length;
+    this.cols = [
+      { field: "id", header: "ID" },
+      { field: "name", header: "Name" },
+      { field: "isActive", header: "IsActive" },
+      { field: "action", header: "", sortable: false, width: '200' }
+    ]
+
+    // this.noRecordColspan = this.pTable.columns.filter(c => c.visible).length;
     PrimeTableUtils.setDefaults(this.pTable);
 
     this.isLoadingClass = true;
@@ -71,7 +79,7 @@ export class MaintenancemanagementComponent implements OnInit {
         err => {
           console.log('Get all generic error');
         },
-        ()=>{
+        () => {
           this.isLoadingClass = false;
         });
 
