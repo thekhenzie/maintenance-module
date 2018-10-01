@@ -8,59 +8,8 @@
     </div>
     <br>
     <div class="searchHeader">
-      <p-button icon="fa fa-fw fa-plus" (onClick)="newComment()" label="Add Note"></p-button>
+      <p-button icon="fa fa-fw fa-plus" (onClick)="newComment()" label="Add Note" [disabled]="!selectedClass"></p-button>
     </div>
-    <!-- 
-    <div class="ui-g">
-      <p-table [columns]="cols" [loading]="showTableLoading" [value]=genericEnumerationList (onLazyLoad)=paginate($event)
-        [totalRecords]="totalRecord">
-        <ng-template pTemplate="caption">
-          <div style="clear: both"></div>
-        </ng-template>
-        <ng-template pTemplate="header" let-columns>
-          <tr>
-            <th *ngFor="let col of columns" [pSortableColumn]="col.field" [pSortableColumnDisabled]="col.field == 'action'"
-              [style.width]="col.renderStyleWidth()">
-              {{col.header}}
-              <ng-container *ngIf="col.field != 'action'">
-                <p-sortIcon [field]="col.field"></p-sortIcon>
-              </ng-container>
-            </th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-rowData let-columns="columns" let-i="rowIndex">
-          <tr>
-            <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
-              <ng-container *ngSwitchCase="'action'">
-                <td *ngIf="col.visible">
-                  <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
-                    [disabled]="rowData['userName'] != username" (click)="editNotes(rowData)">
-                    <span class="fa fa-fw fa-edit ui-clickable ui-button-icon-left"></span>
-                    <span class="ui-button-text ui-clickable">Edit</span>
-                  </button>
-                  <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left" (click)="viewNotes(rowData)">
-                    <span class="fa mdi mdi-eye ui-clickable ui-button-icon-left"></span>
-                    <span class="ui-button-text ui-clickable">View</span>
-                  </button>
-                </td>
-              </ng-container>
-              <ng-container *ngSwitchDefault>
-                <td *ngIf="col.visible">
-                  {{rowData[col.field]}}
-                </td>
-              </ng-container>
-            </ng-container>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="emptymessage">
-          <tr>
-            <td>
-              No records found.
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div> -->
     <br>
     <p-panel>
       <p-table [columns]="cols" [value]="genericEnumerationList" [loading]="showTableLoading" (onLazyLoad)=paginate($event)
@@ -112,6 +61,6 @@
 </div>
 
 
-<app-maintenance-dialog [display]="display" [viewOnly]="viewOnly" (closeModal)='getCloseModal($event)'
+<app-maintenance-dialog [display]="display" [viewOnly]="viewOnly" (closeModal)='getCloseModal($event)' [isEditing]="isEditing"
   [isNewEnumeration]="isNewEnumeration" [selectedGenericEnumeration]="selectedGenericEnumeration" [idSection]="idSection"
   [nameSection]="nameSection" [isActiveSection]="isActiveSection" [indexOfNote]="indexOfNote" (resetTable)="resetTable($event)"></app-maintenance-dialog>

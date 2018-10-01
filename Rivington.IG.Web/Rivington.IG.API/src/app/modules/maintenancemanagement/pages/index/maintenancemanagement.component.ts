@@ -31,6 +31,7 @@ export class MaintenancemanagementComponent implements OnInit {
   classesList: SelectItem[];
   selectedClass: SelectItem;
   isLoadingClass: boolean;
+  isEditing: boolean = false;
   cols: any[];
   genericEnumerationList: GenericEnumeration[];
   selectedGenericEnumeration: GenericEnumeration;
@@ -150,6 +151,7 @@ export class MaintenancemanagementComponent implements OnInit {
     this.isNewEnumeration = false;
     this.viewOnly = false;
     this.display = true;
+    this.isEditing = true;
     this.indexOfNote = this.genericEnumerationList.indexOf(this.selectedGenericEnumeration);
     this.idSection = this.selectedGenericEnumeration.id;
     this.nameSection = this.selectedGenericEnumeration.name;

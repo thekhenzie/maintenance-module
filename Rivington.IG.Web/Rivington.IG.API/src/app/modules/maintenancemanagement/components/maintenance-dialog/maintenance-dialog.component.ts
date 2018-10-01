@@ -22,6 +22,7 @@ export class MaintenanceDialogComponent implements OnInit {
   @Input() isNewEnumeration: boolean;
   @Input() viewOnly: boolean;
   @Input() indexOfNote: number;
+  @Input() isEditing: boolean = false;
   @Input() selectedGenericEnumeration: GenericEnumeration;
   @Output() closeModal: EventEmitter<boolean>;
   @Output() resetTable: EventEmitter<boolean>;
