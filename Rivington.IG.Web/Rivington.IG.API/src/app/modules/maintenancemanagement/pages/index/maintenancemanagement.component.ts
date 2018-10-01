@@ -54,14 +54,6 @@ export class MaintenancemanagementComponent implements OnInit {
       'genIsActive': new FormControl('', Validators.required)
     });
 
-    // this.pTable.columns = [
-    //   new Column({ field: "id", header: "ID" }),
-    //   new Column({ field: "name", header: "Name" }),
-    //   new Column({ field: "isActive", header: "IsActive" }),
-    //   // new Column({ field: "sortOrder", header: "Sort Order" }),
-    //   new Column({ field: "action", header: "", sortable: false, width: '200' })
-    // ];
-
     this.cols = [
       { field: "id", header: "ID" },
       { field: "name", header: "Name" },
@@ -69,7 +61,6 @@ export class MaintenancemanagementComponent implements OnInit {
       { field: "action", header: "", sortable: false, width: '200' }
     ]
 
-    // this.noRecordColspan = this.pTable.columns.filter(c => c.visible).length;
     PrimeTableUtils.setDefaults(this.pTable);
 
     this.isLoadingClass = true;
@@ -83,8 +74,6 @@ export class MaintenancemanagementComponent implements OnInit {
         () => {
           this.isLoadingClass = false;
         });
-
-    // this.selectedType = ;
   }
 
   newComment(): void {
@@ -103,8 +92,7 @@ export class MaintenancemanagementComponent implements OnInit {
   paginate(event) {
     setTimeout(() => {
       this.showTableLoading = true;
-      debugger;
-
+      
       if (this.selectedClass) {
         this.genericService.getGenericList<GenericEnumeration>(this.selectedClass.toString())
           .subscribe(paginationResult => {
